@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    android:background="#000000"
+    tools:context="com.example.krishnapandey.tabbedexample.ReadActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:text="Hello Reader"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#FF6347"
+                    android:fitsSystemWindows="true"
+                    android:layout_marginBottom="32dp"/>
+        </FrameLayout>
+
+</ScrollView>

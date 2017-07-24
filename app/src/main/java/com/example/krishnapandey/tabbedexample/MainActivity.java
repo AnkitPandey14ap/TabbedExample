@@ -1,10 +1,12 @@
 package com.example.krishnapandey.tabbedexample;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -19,9 +21,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
+    private ShareActionProvider mShareActionProvider;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +53,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
@@ -64,27 +61,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem item = menu.findItem(R.id.shareButton);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "here goes your share content body";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share Subject");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+
+        //then set the sharingIntent
+        mShareActionProvider.setShareIntent(sharingIntent);
+
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -110,17 +101,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add("chapter 1");
-            list.add("chapter 2");
-            list.add("chapter 3");
-            list.add("chapter 4");
-            list.add("chapter 5");
-            list.add("chapter 6");
-            list.add("chapter 7");
-            list.add("chapter 8");
+            final ArrayList<String> list = new ArrayList<>();
+            list.add("Power Triangle and Factor");
+            list.add("Power in AC Circuits");
+            list.add("Passive Components");
+            list.add("Harmonics");
+            list.add("Reactive Power");
+            list.add("Average Voltage");
+            list.add("RMS Voltage Tutorial");
+            list.add("hello");
 
-            ArrayList<String> list1 = new ArrayList<>();
+            final ArrayList<String> list1 = new ArrayList<>();
             list1.add("chapter 3");
             list1.add("chapter 8");
 
@@ -129,20 +120,35 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-//                ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
                 MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list);
-
-//                listView.setAdapter(listViewAdapter);
                 listView.setAdapter(myCustomAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(),ReadActivity.class);
+                        intent.putExtra("TITLE", list.get(position));
+                        Log.i("Ankit","main "+list.get(position) );
+
+                        startActivity(intent);
+                        Toast.makeText(getActivity(), list.get(position), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                /*ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list1);
-                listView.setAdapter(listViewAdapter);*/
                 MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list1);
-
-//                listView.setAdapter(listViewAdapter);
                 listView.setAdapter(myCustomAdapter);
 
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(),ReadActivity.class);
+                        intent.putExtra("TITLE", list1.get(position));
+                        startActivity(intent);
+                        Toast.makeText(getActivity(), list1.get(position), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
 
@@ -182,9 +188,9 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Topic";
                 case 1:
-                    return "SECTION 2";
+                    return "Favourite";
                 /*case 2:
                     return "SECTION 3";*/
             }
@@ -193,4 +199,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 }
