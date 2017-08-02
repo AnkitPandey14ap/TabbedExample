@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,29 +38,18 @@ public class ReadActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
         Log.i("Ankit","1 "+title+".txt" );
 
+        WebView webView = (WebView) findViewById(R.id.webView);
 
-        TextView textView = (TextView) findViewById(R.id.textView);
+        WebSettings ws = webView.getSettings();
+        ws.setJavaScriptEnabled(true);
 
-        String txt="";
-
-        Log.i("Ankit","2 "+title+".txt" );
-
-        try{
-//            InputStream is = getAssets().open("hello.txt");
-            Log.i("Ankit","3 "+title+".txt" );
-            InputStream is = getAssets().open(title+".txt");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            txt = new String(buffer);
+        String temp = "like";
+        String path = "file:///android_asset/" + temp + ".html";
+        webView.loadUrl("file:///android_asset/like.html");
+        webView.loadUrl(path);
 
 
 
-        }catch (IOException e){
-            Toast.makeText(this,"Error: "+e, Toast.LENGTH_SHORT).show();
-        }
-        textView.setText(txt);
 
     }
 

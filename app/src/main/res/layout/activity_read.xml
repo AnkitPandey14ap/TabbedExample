@@ -5,24 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-    android:background="#000000"
     tools:context="com.example.krishnapandey.tabbedexample.ReadActivity">
 
-        <FrameLayout
+        <WebView
+            android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp">
 
-                <TextView
-                    android:layout_margin="@dimen/activity_vertical_margin"
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="20sp"
-                    android:text="Hello Reader"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="#FF6347"
-                    android:fitsSystemWindows="true"
-                    android:layout_marginBottom="32dp"/>
-        </FrameLayout>
+        </WebView>
 
 </ScrollView>
