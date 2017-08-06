@@ -3,10 +3,12 @@
 
 P {
 
-font-family: "Open Sans";
+font-family: "OpenSans-Bold";
+src: url("file:///android_asset/fonts/OpenSans-Bold.ttf")
 	font-size: 21px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 30px;
+	text-align: justify;
    }

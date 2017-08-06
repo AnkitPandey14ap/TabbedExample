@@ -178,6 +178,7 @@ public class NavigationActivity extends AppCompatActivity
             list.add("Average Voltage");
             list.add("RMS Voltage Tutorial");
             list.add("hello");
+            list.add("demo");
 
             final ArrayList<String> list1 = new ArrayList<>();
             list1.add("Practical 1");

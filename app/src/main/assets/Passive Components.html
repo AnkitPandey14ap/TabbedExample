@@ -1,3 +1,17 @@
+<html>
+<head>
+
+    <link href="cjcj.css?family=Open+Sans" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=yes">
+
+</head>
+
+<body>
+<p style="text-align: justify">
+
+
 A resistor is an electrical device that resists the flow of electrical current. In the digital era, we can find a variety of “digital resistors” for our everyday applications. This article is about digital potentiometers. A digital potentiometer (digital pot) is a variable resistor that is controlled by digital signals instead of by mechanical movement. In principle, at the heart of a digital potentiometer is a resistor ladder with electronic switches at its every step. Only one electronic switch is closed at the same time, and in this way, the closed switch determines the wiper position and the resistance ratio. The amount of steps in the ladder determines the resolution of the digital potentiometer.
 <br/>
 dpot 2
@@ -32,3 +46,10 @@ Just refer to the datasheet and note that to program the digital pot, you have t
 arduino
 <br/>
 In the hardware setup, MCP41010 is connected to the Arduino via the Arduino’s SPI Interface. Potentiometer terminals A (pin 5) and B (pin 7) are connected to the Arduino 5-volt supply (5 V) and Ground (Gnd). The wiper terminal W (pin 6) is connected to the Analog Pin 1 (A1) of the Arduino. The pretty simple sketch (shown below) loaded into the Arduino selects the MCP41010 and cycles through all 256 wiper positions (about 39 Ω per step). The voltage at the analog pin is then read and displayed on the serial monitor.
+
+</p>
+
+</body>
+
+
+</html>

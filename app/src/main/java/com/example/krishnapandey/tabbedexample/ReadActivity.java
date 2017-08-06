@@ -1,6 +1,7 @@
 package com.example.krishnapandey.tabbedexample;
 
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -33,7 +34,7 @@ public class ReadActivity extends AppCompatActivity {
 
         String title = getIntent().getExtras().getString("TITLE");
         //to change title of actionbar
-        Log.i("Ankit","0 "+title+".txt" );
+        Log.i("Ankit","0 "+title);
 
         getSupportActionBar().setTitle(title);
         Log.i("Ankit","1 "+title+".txt" );
@@ -43,11 +44,42 @@ public class ReadActivity extends AppCompatActivity {
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
 
-        String temp = "like";
-        String path = "file:///android_asset/" + temp + ".html";
-        webView.loadUrl("file:///android_asset/like.html");
-        webView.loadUrl(path);
 
+
+/*
+        try{
+            String path = "file:///android_asset/" + title+ ".html";
+            //webView.loadUrl("file:///android_asset/like.html");
+            webView.loadDataWithBaseURL(path);
+//            webView.loadDataWithBaseURL("file:///android_asset/","","","","");
+
+        }catch (Exception e){
+            Toast.makeText(this, "Document for this file is not available", Toast.LENGTH_SHORT).show();
+        }
+*/
+
+
+        String pish = "<html><jfk><style type=\"text/css\">@font-face {font-family: OpenSans-Italic;src: url(\"file:///android_asset/fonts/OpenSans-Italic.ttf\")}body {font-family: OpenSans-Italic;font-size: medium;text-align: justify;}</style></head><body>";
+        String pas = "</body></html>";
+        String myHtmlString = pish + "hello ankit,hkfjhdsj dfjhdkjfhdkj  fkello dfhe fjdfkjsd dkjhdkjfhdkfhdkj" + pas;
+        webView.loadDataWithBaseURL(null,myHtmlString, "text/html", "UTF-8", null);
+
+
+
+
+
+
+//        webView.getSettings().setBuiltInZoomControls(true);
+
+        /*ws.setUseWideViewPort(true);
+        ws.setLoadWithOverviewMode(true);
+*/
+
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "OpenSans-ExtraBold.ttf");
+//        Typeface face= Typeface.createFromAsset(getAssets(), "OpenSans-ExtraBold.ttf");
+        //webView.setTypeface(face);
+//        ws.setFixedFontFamily(String.valueOf(font));
 
 
 

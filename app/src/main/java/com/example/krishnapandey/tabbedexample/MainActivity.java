@@ -107,17 +107,14 @@ public class MainActivity extends AppCompatActivity {
             list.add("Passive Components");
             list.add("Harmonics");
             list.add("Reactive Power");
-            list.add("Reactive Power");
-            list.add("Reactive Power");
-            list.add("Reactive Power");
-            list.add("Average Voltage");
             list.add("Average Voltage");
             list.add("RMS Voltage Tutorial");
             list.add("hello");
+            list.add("demo");
 
             final ArrayList<String> list1 = new ArrayList<>();
-            list1.add("chapter 3");
-            list1.add("chapter 8");
+            list1.add("Practical 1");
+            list1.add("Practical 2");
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ListView listView = (ListView) rootView.findViewById(R.id.listView);

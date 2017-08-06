@@ -1,17 +1,38 @@
-﻿A resistor is an electrical device that resists the flow of electrical current. In the digital era, we can find a variety of “digital resistors” for our everyday applications. This article is about digital potentiometers. A digital potentiometer (digital pot) is a variable resistor that is controlled by digital signals instead of by mechanical movement. In principle, at the heart of a digital potentiometer is a resistor ladder with electronic switches at its every step. Only one electronic switch is closed at the same time, and in this way, the closed switch determines the wiper position and the resistance ratio. The amount of steps in the ladder determines the resolution of the digital potentiometer.
+<html xmlns:font-family="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">
+<head>
+
+    <style type="text/css">
+@font-face {
+    font-family: OpenSans-BoldItalic;
+    src: url("file:///android_asset/fonts/OpenSans-BoldItalic.ttf")
+}
+body {
+    font-family: MyFont;
+    font-size: medium;
+    text-align: justify;
+}
+</style>
+
+</head>
+
+<body>
+
+<p style="font-family: 'feast'" >
+&emsp;
+A resistor is an electrical device that resists the flow of electrical current. In the digital era, we can find a variety of “digital resistors” for our everyday applications. This article is about digital potentiometers. A digital potentiometer (digital pot) is a variable resistor that is controlled by digital signals instead of by mechanical movement. In principle, at the heart of a digital potentiometer is a resistor ladder with electronic switches at its every step. Only one electronic switch is closed at the same time, and in this way, the closed switch determines the wiper position and the resistance ratio. The amount of steps in the ladder determines the resolution of the digital potentiometer.
 <br/>
 dpot 2
 <br/>
 Digital potentiometers are integrated circuits with the initial position of the wiper at the midscale. However, some variants have an on-board (non-volatile) memory that remembers the last wiper position. Something to take into account when you start working with digital potentiometers is the fact that most of them are rated at 5 Vdc, and 10 KΩ is the most popular value.
 <br/>
 The MCP41010
-<br/>
+<br/> &emsp;
 MPC41010 is a tiny digital potentiometer from Microchip with a maximum resistance value of 10 KΩ (minimum value 100 Ω). The MCP41010 is a single-channel, 256-position digital potentiometer available in an 8-pin PDIP or SOIC package.
 <br/>
 mcp41010
 <br/>
 Now to the pin description of MCP41010:
-<br/>
+<br/>&emsp;
 PA0: Potentiometer Terminal A<br/>
 PB0: Potentiometer Terminal B<br/>
 PW0: Potentiometer Wiper
@@ -20,15 +41,23 @@ SCK: Serial Clock (SPI port clock pin used to clock in new register data)
 SI: Serial Data Input (SPI port serial data input pin. The command and data bytes are clocked into the shift register using this pin)
 VDD &VSS: Power supply terminals (2.7 V–5.5 V)
 MCP41010 & Arduino Test
-<br/>
+<br/>&emsp;
 As you may have noticed, a digital potentiometer behaves the same as a mechanical potentiometer, except that instead of having a round handle that you can turn, it’s controlled by a digital interface. As a basic test, you can drive MCP41010 with the help of an Arduino UNO and its Serial Peripheral Interface (SPI) port. Note that SPI is a “synchronous” serial data bus — data can travel in both directions at the same time. On Arduino Uno (and compatible) boards, the SPI pins used are:
 <br/>
 SS – D10 (you can use other digital pins, but D10 is the default)
 MOSI – D11<br/>
 MISO – D12<br/>
 SCK – D13<br/>
+
 Just refer to the datasheet and note that to program the digital pot, you have to first send a “command byte” (to tell the chip what to do) and a “data byte” (to tell the chip which value of resistance to set, from 0 to 255). As found in the datasheet, “executing any command is accomplished by setting CS low and then clocking in a command byte followed by a data byte into the 16-bit shift register. The command is executed when CS is raised.” Now prepare your hardware setup as follows!
 <br/>
 arduino
-<br/>
+<br/>&#09;
 In the hardware setup, MCP41010 is connected to the Arduino via the Arduino’s SPI Interface. Potentiometer terminals A (pin 5) and B (pin 7) are connected to the Arduino 5-volt supply (5 V) and Ground (Gnd). The wiper terminal W (pin 6) is connected to the Analog Pin 1 (A1) of the Arduino. The pretty simple sketch (shown below) loaded into the Arduino selects the MCP41010 and cycles through all 256 wiper positions (about 39 Ω per step). The voltage at the analog pin is then read and displayed on the serial monitor.
+</p>
+<img src="file:///android_res/drawable/logo.png" />
+
+</body>
+
+
+</html>
