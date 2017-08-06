@@ -1,11 +1,14 @@
 package com.example.krishnapandey.tabbedexample;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
@@ -37,6 +40,10 @@ public class ReadActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_read);
 
+        if(!getIntent().getExtras().isEmpty()){
+            textSize= getIntent().getStringExtra("SIZE")+"px";
+        }
+
 
         //to change title of actionbar
         title = getIntent().getExtras().getString("TITLE");
@@ -46,14 +53,42 @@ public class ReadActivity extends AppCompatActivity {
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
 
-        Log.i("Ankit", tContents);
+        //Log.i("Ankit", tContents);
 
-        setContent();
+        setContent(textSize);
 
     }
 
-    private void setContent() {
-        
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_read_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+//            startActivityForResult(new Intent(ReadActivity.this,Setting.class),0);
+            startActivity(new Intent(ReadActivity.this,Setting.class).putExtra("TITLE", title));
+            finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setContent(String textSize) {
+        if(textSize.equals("0px"))
+            textSize = "16px";
         try {
             InputStream stream = getAssets().open(title+".txt");
 
@@ -93,6 +128,7 @@ public class ReadActivity extends AppCompatActivity {
                 "</head>" +
                 "<body>";
 
+        Log.i("Ankit", textSize+" hrllo");
         String pas = "</body></html>";
 
         String myHtmlString = pish + tContents+ pas;
@@ -110,6 +146,21 @@ public class ReadActivity extends AppCompatActivity {
 */
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0)
+        {
+            Log.i("Ankit", textSize+" result");
+
+            String message=data.getStringExtra("SIZE");
+            textSize = message+"px";
+            setContent(textSize);
+
+        }
     }
 
 }
