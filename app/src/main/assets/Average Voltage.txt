@@ -1,23 +1,4 @@
-<html xmlns:font-family="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">
-<head>
 
-    <style type="text/css">
-@font-face {
-    font-family: OpenSans-BoldItalic;
-    src: url("file:///android_asset/fonts/OpenSans-BoldItalic.ttf")
-}
-body {
-    font-family: MyFont;
-    font-size: medium;
-    text-align: justify;
-}
-</style>
-
-</head>
-
-<body>
-
-<p style="font-family: 'feast'" >
 &emsp;
 A resistor is an electrical device that resists the flow of electrical current. In the digital era, we can find a variety of “digital resistors” for our everyday applications. This article is about digital potentiometers. A digital potentiometer (digital pot) is a variable resistor that is controlled by digital signals instead of by mechanical movement. In principle, at the heart of a digital potentiometer is a resistor ladder with electronic switches at its every step. Only one electronic switch is closed at the same time, and in this way, the closed switch determines the wiper position and the resistance ratio. The amount of steps in the ladder determines the resolution of the digital potentiometer.
 <br/>
@@ -57,7 +38,3 @@ In the hardware setup, MCP41010 is connected to the Arduino via the Arduino’s 
 </p>
 <img src="file:///android_res/drawable/logo.png" />
 
-</body>
-
-
-</html>

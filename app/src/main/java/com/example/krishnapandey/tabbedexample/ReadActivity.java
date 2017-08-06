@@ -19,7 +19,13 @@ import java.util.ArrayList;
 
 public class ReadActivity extends AppCompatActivity {
 
+    private WebView webView;
     Toolbar mActionBarToolbar;
+    private String title;
+    private String tContents="";
+
+    private String textStyle="OpenSans-Bold";
+    private String textSize="16px";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,36 +38,64 @@ public class ReadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_read);
 
 
-        String title = getIntent().getExtras().getString("TITLE");
         //to change title of actionbar
-        Log.i("Ankit","0 "+title);
+        title = getIntent().getExtras().getString("TITLE");
 
         getSupportActionBar().setTitle(title);
-        Log.i("Ankit","1 "+title+".txt" );
-
-        WebView webView = (WebView) findViewById(R.id.webView);
-
+        webView = (WebView) findViewById(R.id.webView);
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
 
+        Log.i("Ankit", tContents);
 
+        setContent();
 
-/*
-        try{
-            String path = "file:///android_asset/" + title+ ".html";
-            //webView.loadUrl("file:///android_asset/like.html");
-            webView.loadDataWithBaseURL(path);
-//            webView.loadDataWithBaseURL("file:///android_asset/","","","","");
+    }
 
-        }catch (Exception e){
-            Toast.makeText(this, "Document for this file is not available", Toast.LENGTH_SHORT).show();
+    private void setContent() {
+        
+        try {
+            InputStream stream = getAssets().open(title+".txt");
+
+            int size = stream.available();
+            byte[] buffer = new byte[size];
+            stream.read(buffer);
+            stream.close();
+            tContents = new String(buffer);
+            Log.i("Ankit", tContents);
+        } catch (IOException e) {
+            Toast.makeText(this, e+" File missing", Toast.LENGTH_SHORT).show();
         }
-*/
+        
+//        String pish = "<html><jfk><style type=\"text/css\">@font-face {font-family: OpenSans-Italic;src: url(\"file:///android_asset/fonts/OpenSans-Italic.ttf\")}body {font-family: OpenSans-Italic;font-size: 18px;text-align: justify;}</style></head><body>";
 
 
-        String pish = "<html><jfk><style type=\"text/css\">@font-face {font-family: OpenSans-Italic;src: url(\"file:///android_asset/fonts/OpenSans-Italic.ttf\")}body {font-family: OpenSans-Italic;font-size: medium;text-align: justify;}</style></head><body>";
+        String pish = "<html>" +
+                "<jfk>" +
+                "<style type=\"text/css\">" +
+                "@font-face {" +
+                "font-family: " +
+                textStyle+
+                ";" +
+                "src: url(\"file:///android_asset/fonts/" +
+                textStyle +
+                ".ttf\")}" +
+                "body {" +
+                "font-family: " +
+                textStyle +
+                ";" +
+                "font-size: " +
+                textSize +
+                ";" +
+                "text-align: justify;" +
+                "}" +
+                "</style>" +
+                "</head>" +
+                "<body>";
+
         String pas = "</body></html>";
-        String myHtmlString = pish + "hello ankit,hkfjhdsj dfjhdkjfhdkj  fkello dfhe fjdfkjsd dkjhdkjfhdkfhdkj" + pas;
+
+        String myHtmlString = pish + tContents+ pas;
         webView.loadDataWithBaseURL(null,myHtmlString, "text/html", "UTF-8", null);
 
 
@@ -74,13 +108,6 @@ public class ReadActivity extends AppCompatActivity {
         /*ws.setUseWideViewPort(true);
         ws.setLoadWithOverviewMode(true);
 */
-
-
-//        Typeface font = Typeface.createFromAsset(getAssets(), "OpenSans-ExtraBold.ttf");
-//        Typeface face= Typeface.createFromAsset(getAssets(), "OpenSans-ExtraBold.ttf");
-        //webView.setTypeface(face);
-//        ws.setFixedFontFamily(String.valueOf(font));
-
 
 
     }
