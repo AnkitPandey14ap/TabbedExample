@@ -28,7 +28,8 @@ public class ReadActivity extends AppCompatActivity {
     private String tContents="";
 
     private String textStyle="OpenSans-Bold";
-    private String textSize="16px";
+    private String textSize="";
+    private int result=50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,10 @@ public class ReadActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_read);
 
-        if(!getIntent().getExtras().isEmpty()){
-            textSize= getIntent().getStringExtra("SIZE")+"px";
-        }
-
-
         //to change title of actionbar
         title = getIntent().getExtras().getString("TITLE");
+
+        textSize=String.valueOf(16);
 
         getSupportActionBar().setTitle(title);
         webView = (WebView) findViewById(R.id.webView);
@@ -68,17 +66,13 @@ public class ReadActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-//            startActivityForResult(new Intent(ReadActivity.this,Setting.class),0);
-            startActivity(new Intent(ReadActivity.this,Setting.class).putExtra("TITLE", title));
-            finish();
+            Intent i = new Intent(ReadActivity.this,Setting.class);
+            i.putExtra("SIZE", textSize);
+            startActivityForResult(i, result);
 
             return true;
         }
@@ -86,9 +80,11 @@ public class ReadActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private void setContent(String textSize) {
-        if(textSize.equals("0px"))
-            textSize = "16px";
+        if(textSize=="0") {
+            textSize = "16";
+        }
         try {
             InputStream stream = getAssets().open(title+".txt");
 
@@ -97,7 +93,7 @@ public class ReadActivity extends AppCompatActivity {
             stream.read(buffer);
             stream.close();
             tContents = new String(buffer);
-            Log.i("Ankit", tContents);
+
         } catch (IOException e) {
             Toast.makeText(this, e+" File missing", Toast.LENGTH_SHORT).show();
         }
@@ -121,7 +117,7 @@ public class ReadActivity extends AppCompatActivity {
                 ";" +
                 "font-size: " +
                 textSize +
-                ";" +
+                "px;" +
                 "text-align: justify;" +
                 "}" +
                 "</style>" +
@@ -147,17 +143,16 @@ public class ReadActivity extends AppCompatActivity {
 
 
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==0)
+        if(requestCode==50)
         {
             Log.i("Ankit", textSize+" result");
 
             String message=data.getStringExtra("SIZE");
-            textSize = message+"px";
+            textSize = message;
             setContent(textSize);
 
         }
