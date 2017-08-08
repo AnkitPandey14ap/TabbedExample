@@ -1,1 +1,165 @@
-hello ankit what a beautiful day <br/>go outside have a look
+<p>
+    We saw in our tutorial about
+    <a
+        href="http://www.electronics-tutorials.ws/accircuits/power-in-ac-circuits.html"
+    >
+        Electrical Power
+    </a>
+    that AC circuits which contain resistance and capacitance or resistance and
+    inductance, or both, also contain real power and reactive power. So in
+    order for us to calculate the total power consumed, we need to know the
+    phase difference between the sinusoidal waveforms of the voltage and
+    current.
+</p>
+<p>
+    In an AC circuit, the voltage and current waveforms are sinusoidal so their
+    amplitudes are constantly changing over time. Since we know that power is
+    voltage times the current (P = V*I), maximum power will occur when the two
+    voltage and current waveforms are lined up with each other. That is, their
+    peaks and zero crossover points occur at the same time. When this happens
+    the two waveforms are said to be “in-phase”.
+</p>
+<p>
+    The three main components in an AC circuit which can affect the
+    relationship between the voltage and current waveforms, and therefore their
+    phase difference, by defining the total impedance of the circuit are the
+    resistor, the capacitor and the inductor.
+</p>
+<p>
+    The impedance, (Z) of an AC circuit is equivalent to the resistance
+    calculated in DC circuits, with impedance given in ohms. For AC circuits,
+    impedance is generally defined as the ratio of the voltage and current
+    phasor’s produced by a circuit component. Phasor’s are straight lines drawn
+    in such a way as to represents a voltage or current amplitude by its length
+    and its phase difference with respect to other phasor lines by its angular
+    position relative to the other phasor’s.
+</p>
+<p>
+    AC circuits contain both resistance and reactance that are combined
+    together to give a total impedance (Z) that limits current flow around the
+    circuit. But an AC circuits impedance is not equal to the algebraic sum of
+    the resistive and reactive ohmic values as a pure resistance and pure
+    reactance are 90o out-of-phase with each other. But we can use this 90o
+    phase difference as the sides of a right angled triangle, called an
+    impedance triangle, with the impedance being the hypotenuse as determined
+    by Pythagoras theorem.
+</p>
+<p>
+    This geometric relationship between resistance, reactance and impedance can
+    be represented visually by the use of an impedance triangle as shown.
+</p>
+<h3>
+    Impedance Triangle
+</h3>
+<p>
+    <img
+        src="http://www.electronics-tutorials.ws/accircuits/acp300.gif"
+        alt="impedance triangle"
+        title="Impedance Triangle"
+        width="420"
+        height="161"
+    />
+</p>
+<div>
+</div>
+<p>
+    Note that impedance, which is the vector sum of the resistance and
+    reactance, has not only a magnitude (Z) but it also has a phase angle (θ),
+    which represents the phase difference between the resistance and the
+    reactance. Also note that the triangle will change shape due to variations
+    in reactance, (X) as the frequency changes. Of course, resistance (R) will
+    always remain constant.
+</p>
+<p>
+    We can take this idea one step further by converting the impedance triangle
+    into a power triangle representing the three elements of power in an AC
+    circuit. Ohms Law tells us that in a DC circuit, power (P), in watts, is
+    equal to the current squared (I2) times the resistance (R). So we can
+    multiply the three sides of our impedance triangle above by I2 to obtain
+    the corresponding power triangle as:
+</p>
+<div>
+</div>
+<p>
+    Real Power P = I2R Watts, (W)
+</p>
+<div>
+</div>
+<p>
+    Reactive Power Q = I2X Volt-amperes Reactive, (VAr)
+</p>
+<div>
+</div>
+<p>
+    Apparent Power S = I2Z Volt-amperes, (VA)
+</p>
+<h2>
+    Real Power in AC Circuits
+</h2>
+<p>
+    Real power P, also known as true or active power, performs the “real work”
+    within an electrical circuit. Real power, measured in watts, defines the
+    power consumed by the resistive part of a circuit. Then real power, P in an
+    AC circuit is the same as power, P in a DC circuit. So just like DC
+    circuits, it is always calculated as I2R, where R is the total resistive
+    component of the circuit.
+</p>
+<div>
+    <img
+        src="http://www.electronics-tutorials.ws/accircuits/acp302.gif"
+        alt="resistance phasor"
+        title="Resistance Phasor"
+        width="107"
+        height="93"
+    />
+</div>
+<p>
+    As resistances do not produce any phasor difference (phase shift) between
+    voltage and current waveforms, all the useful power is delivered directly
+    to the resistance and converted to heat, light and work. Then the power
+    consumed by a resistance is real power which is fundamentally the circuits
+    average power.
+</p>
+<p>
+    To find the corresponding value of the real power the rms voltage and
+    current values are multiplied by the cosine of the phase angle, θ as shown.
+</p>
+<div>
+</div>
+<p>
+    Real Power P = I2R = V*I*cos(θ) Watts, (W)
+</p>
+<div>
+</div>
+<p>
+    But as their is no phase difference between the voltage and the current in
+    a resistive circuit, the phase shift between the two waveforms will be zero
+    (0). Then:
+</p>
+<h3>
+    Real Power in an AC Circuit
+</h3>
+<p>
+    <img
+        src="http://www.electronics-tutorials.ws/accircuits/acp301.gif"
+        alt="real power in an ac circuit"
+        title="Real Power in an AC Circuit"
+        width="302"
+        height="240"
+    />
+</p>
+<div>
+</div>
+<p>
+    Where real power (P) is in watts, voltage (V) is in rms volts and current
+    (I) is in rms amperes.
+</p>
+<p>
+    Then real power is the I2R resistive element measured in watts, which is
+    what you read on your utility energy meter and has units in Watts (W),
+    Kilowatts (kW), and Megawatts (MW). Note that real power, P is always
+    positive.
+</p>
+<div>
+    <br/>
+</div>

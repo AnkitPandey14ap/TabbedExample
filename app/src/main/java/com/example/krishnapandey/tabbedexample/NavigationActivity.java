@@ -118,16 +118,16 @@ public class NavigationActivity extends AppCompatActivity
             intent.setData(Uri.parse("http://www.banaao.co.in"));
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_language) {
             setLocale("hi");
 
         } else if (id == R.id.nav_send) {
 
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com","hamarapandey@gmail.com"});
+            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"ankit.pandey14ap@gmail.com","prem.sagar@banaao.co.in"});
 //        i.putExtra(Intent.EXTRA_EMAIL  , arrayList);
-            i.putExtra(Intent.EXTRA_SUBJECT, "Banaao Tutorial");
+            i.putExtra(Intent.EXTRA_SUBJECT, "Banaao Electronics");
 //            i.putExtra(Intent.EXTRA_TEXT   , feedbackEditText.getText().toString());
             try {
                 startActivity(Intent.createChooser(i, "Send mail..."));
@@ -180,16 +180,33 @@ public class NavigationActivity extends AppCompatActivity
             list.add("hello");
             list.add("demo");
 
+            final ArrayList<String> iconList = new ArrayList<>();
+            iconList.add(String.valueOf(R.drawable.icon1));
+            iconList.add(String.valueOf(R.drawable.icon2));
+            iconList.add(String.valueOf(R.drawable.icon3));
+            iconList.add(String.valueOf(R.drawable.icon4));
+            iconList.add(String.valueOf(R.drawable.icon5_png_icon));
+            iconList.add(String.valueOf(R.drawable.icon1));
+            iconList.add(String.valueOf(R.drawable.icon2));
+            iconList.add(String.valueOf(R.drawable.icon4));
+            iconList.add(String.valueOf(R.drawable.icon5_png_icon));
+
             final ArrayList<String> list1 = new ArrayList<>();
             list1.add("Practical 1");
             list1.add("Practical 2");
+            list1.add("Practical 3");
+
+            final ArrayList<String> iconList1= new ArrayList<>();
+            iconList1.add(String.valueOf(R.drawable.icon3));
+            iconList1.add(String.valueOf(R.drawable.icon2));
+            iconList1.add(String.valueOf(R.drawable.icon1));
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ListView listView = (ListView) rootView.findViewById(R.id.listView);
 
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list);
+                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list,iconList);
                 listView.setAdapter(myCustomAdapter);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -205,7 +222,7 @@ public class NavigationActivity extends AppCompatActivity
                 });
 
             }else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list1);
+                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list1,iconList1);
                 listView.setAdapter(myCustomAdapter);
 
 

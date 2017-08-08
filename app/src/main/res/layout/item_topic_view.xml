@@ -9,6 +9,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:src="@drawable/check_box"
+        android:padding="4dp"
 
         android:layout_centerVertical="true"/>
 

@@ -24,11 +24,15 @@ class MyCustomAdapter extends BaseAdapter implements ListAdapter{
 
     private final Context context;
     private final ArrayList<String> list;
+    private final ArrayList<String> iconList;
 
-    public MyCustomAdapter(Context context, ArrayList<String> list) {
+
+    public MyCustomAdapter(Context context, ArrayList<String> list,ArrayList<String> iconList) {
 
         this.context = context;
         this.list = list;
+
+        this.iconList = iconList;
     }
 
     @Override
@@ -54,7 +58,10 @@ class MyCustomAdapter extends BaseAdapter implements ListAdapter{
             view = layoutInflater.inflate(R.layout.item_topic_view, null);
         }
         TextView textView = (TextView) view.findViewById(R.id.textView);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         textView.setText(list.get(position));
+        imageView.setImageResource(Integer.parseInt(iconList.get(position)));
+
 
 
         return view;

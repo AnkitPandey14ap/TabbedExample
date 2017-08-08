@@ -7,9 +7,9 @@
             android:icon="@drawable/browser_icon"
             android:title="Visit us" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_language"
+            android:icon="@drawable/translator_icon"
+            android:title="Language" />
     </group>
 
     <item android:title="Communicate">

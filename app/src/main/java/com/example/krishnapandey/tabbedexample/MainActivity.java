@@ -101,68 +101,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            final ArrayList<String> list = new ArrayList<>();
-            list.add("Power Triangle and Factor");
-            list.add("Power in AC Circuits");
-            list.add("Passive Components");
-            list.add("Harmonics");
-            list.add("Reactive Power");
-            list.add("Average Voltage");
-            list.add("RMS Voltage Tutorial");
-            list.add("hello");
-            list.add("demo");
-
-            final ArrayList<String> list1 = new ArrayList<>();
-            list1.add("Practical 1");
-            list1.add("Practical 2");
-
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            ListView listView = (ListView) rootView.findViewById(R.id.listView);
-
-
-            if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list);
-                listView.setAdapter(myCustomAdapter);
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getActivity(),ReadActivity.class);
-                        intent.putExtra("TITLE", list.get(position));
-                        Log.i("Ankit","main "+list.get(position) );
-
-                        startActivity(intent);
-                        Toast.makeText(getActivity(), list.get(position), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list1);
-                listView.setAdapter(myCustomAdapter);
-
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getActivity(),ReadActivity.class);
-                        intent.putExtra("TITLE", list1.get(position));
-                        startActivity(intent);
-                        Toast.makeText(getActivity(), list1.get(position), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-
-
-//            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            Log.i("Ankit", String.valueOf(getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-
-        @Override
         public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
         }

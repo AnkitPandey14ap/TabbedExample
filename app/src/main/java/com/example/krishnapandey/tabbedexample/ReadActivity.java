@@ -1,6 +1,8 @@
 package com.example.krishnapandey.tabbedexample;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -27,9 +29,12 @@ public class ReadActivity extends AppCompatActivity {
     private String title;
     private String tContents="";
 
-    private String textStyle="OpenSans-Bold";
+//    private String textStyle="OpenSans-Bold";
+    private String textStyle="";
     private String textSize="";
     private int result=50;
+
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +46,19 @@ public class ReadActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_read);
 
+        sharedpreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
+
+        textSize= sharedpreferences .getString("SIZE", String.valueOf(16));
+        textStyle= sharedpreferences .getString("STYLE", "OpenSans-Bold");
+
+
+
+
+
         //to change title of actionbar
         title = getIntent().getExtras().getString("TITLE");
 
-        textSize=String.valueOf(16);
+//        textSize=String.valueOf(16);
 
         getSupportActionBar().setTitle(title);
         webView = (WebView) findViewById(R.id.webView);
@@ -53,7 +67,7 @@ public class ReadActivity extends AppCompatActivity {
 
         //Log.i("Ankit", tContents);
 
-        setContent(textSize);
+        setContent(textSize,textStyle);
 
     }
 
@@ -72,6 +86,7 @@ public class ReadActivity extends AppCompatActivity {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(ReadActivity.this,Setting.class);
             i.putExtra("SIZE", textSize);
+            i.putExtra("STYLE", textStyle);
             startActivityForResult(i, result);
 
             return true;
@@ -81,7 +96,7 @@ public class ReadActivity extends AppCompatActivity {
     }
 
 
-    private void setContent(String textSize) {
+    private void setContent(String textSize,String textStyle) {
         if(textSize=="0") {
             textSize = "16";
         }
@@ -151,11 +166,22 @@ public class ReadActivity extends AppCompatActivity {
         {
             Log.i("Ankit", textSize+" result");
 
-            String message=data.getStringExtra("SIZE");
-            textSize = message;
-            setContent(textSize);
+            this.textSize=data.getStringExtra("SIZE");
+            String textStyle=data.getStringExtra("STYLE");
+            this.textStyle = textStyle;
+            setContent(textSize,textStyle);
 
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("SIZE", textSize);
+        editor.putString("STYLE", textStyle);
+        editor.commit();
+//        editor.apply();
+    }
 }
