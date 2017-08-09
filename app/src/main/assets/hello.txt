@@ -1,3 +1,11 @@
+
+    <img
+        src="file:///android_res/drawable/acp300.gif"
+        alt="real power in an ac circuit"
+        title="Real Power in an AC Circuit"
+        width="420"
+        height="161"
+    />
 <p>
     We saw in our tutorial about
     <a
@@ -141,7 +149,7 @@
 </h3>
 <p>
     <img
-        src="http://www.electronics-tutorials.ws/accircuits/acp301.gif"
+        src="R.drawable.icon5_png_icon.png"
         alt="real power in an ac circuit"
         title="Real Power in an AC Circuit"
         width="302"
