@@ -169,6 +169,7 @@ public class NavigationActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+//name list for Theories
             final ArrayList<String> list = new ArrayList<>();
             list.add("Power Triangle and Factor");
             list.add("Power in AC Circuits");
@@ -179,6 +180,7 @@ public class NavigationActivity extends AppCompatActivity
             list.add("RMS Voltage Tutorial");
             list.add("hello");
             list.add("demo");
+            list.add("Test");
 
             final ArrayList<String> iconList = new ArrayList<>();
             iconList.add(String.valueOf(R.drawable.icon1));
@@ -190,7 +192,8 @@ public class NavigationActivity extends AppCompatActivity
             iconList.add(String.valueOf(R.drawable.icon2));
             iconList.add(String.valueOf(R.drawable.icon4));
             iconList.add(String.valueOf(R.drawable.icon5_png_icon));
-
+            iconList.add(String.valueOf(R.drawable.icons8_ohms_logo));
+//list for practicals
             final ArrayList<String> list1 = new ArrayList<>();
             list1.add("Practical 1");
             list1.add("Practical 2");
