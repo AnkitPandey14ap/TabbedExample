@@ -212,11 +212,6 @@ public class NavigationActivity extends AppCompatActivity
                     iconList1.add(iconList.get(i));
                 }
             }
-/*
-            iconList1.add(String.valueOf(R.drawable.icon3));
-            iconList1.add(String.valueOf(R.drawable.icon2));
-            iconList1.add(String.valueOf(R.drawable.icon1));
-*/
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ListView listView = (ListView) rootView.findViewById(R.id.listView);
