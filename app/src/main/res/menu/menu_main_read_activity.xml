@@ -8,4 +8,10 @@
         android:title="@string/action_settings"
         app:showAsAction="ifRoom"
         android:icon="@drawable/cog_24"/>
+    <item
+        android:id="@+id/favouriteButton"
+        android:icon="@drawable/heart_unchecked"
+        app:showAsAction="always"
+        android:title="favourite"/>
+
 </menu>

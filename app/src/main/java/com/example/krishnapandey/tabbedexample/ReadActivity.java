@@ -36,6 +36,9 @@ public class ReadActivity extends AppCompatActivity {
 
     private SharedPreferences sharedpreferences;
 
+    boolean star = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,13 @@ public class ReadActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_read_activity, menu);
+
+        //for favourite Button
+        MenuItem item = menu.findItem(R.id.favouriteButton);
+        if(sharedpreferences.getBoolean(title, false)){
+            item.setIcon(R.drawable.heart_checked);
+            star = true;
+        }
         return true;
     }
 
@@ -89,6 +99,18 @@ public class ReadActivity extends AppCompatActivity {
             i.putExtra("STYLE", textStyle);
             startActivityForResult(i, result);
 
+            return true;
+        }
+        if(id==R.id.favouriteButton){
+            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+            if(star){
+                star = false;
+                item.setIcon(R.drawable.heart_unchecked);
+            }
+            else{
+                star = true;
+                item.setIcon(R.drawable.heart_checked);
+            }
             return true;
         }
 
@@ -181,6 +203,8 @@ public class ReadActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("SIZE", textSize);
         editor.putString("STYLE", textStyle);
+        //storing the data is starred or not
+        editor.putBoolean(title, star);
         editor.commit();
 //        editor.apply();
     }

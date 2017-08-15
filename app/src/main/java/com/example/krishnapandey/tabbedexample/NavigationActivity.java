@@ -1,6 +1,8 @@
 package com.example.krishnapandey.tabbedexample;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -42,6 +44,10 @@ public class NavigationActivity extends AppCompatActivity
 
     private ShareActionProvider mShareActionProvider;
 
+    public static SharedPreferences sharedpreferences;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +63,7 @@ public class NavigationActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-//old code
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */// Create the adapter that will return a fragment for each of the three
+        navigationView.setNavigationItemSelectedListener(this);/// Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -73,10 +74,18 @@ public class NavigationActivity extends AppCompatActivity
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+//        private SharedPreferences sharedpreferences;
+        sharedpreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
+
+
+
+
+
+
+
 
 
     }
-/*
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -85,7 +94,7 @@ public class NavigationActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -191,15 +200,23 @@ public class NavigationActivity extends AppCompatActivity
             iconList.add(String.valueOf(R.drawable.icon4));
             iconList.add(String.valueOf(R.drawable.icon5_png_icon));
 
-            final ArrayList<String> list1 = new ArrayList<>();
-            list1.add("Practical 1");
-            list1.add("Practical 2");
-            list1.add("Practical 3");
 
-            final ArrayList<String> iconList1= new ArrayList<>();
+            //for starred list
+            final ArrayList<String> list1 = new ArrayList<>();
+            final ArrayList<String> iconList1 = new ArrayList<>();
+
+
+            for (int i = 0; i <list.size() ; i++) {
+                if(sharedpreferences .getBoolean(list.get(i), false)){
+                    list1.add(list.get(i));
+                    iconList1.add(iconList.get(i));
+                }
+            }
+/*
             iconList1.add(String.valueOf(R.drawable.icon3));
             iconList1.add(String.valueOf(R.drawable.icon2));
             iconList1.add(String.valueOf(R.drawable.icon1));
+*/
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             ListView listView = (ListView) rootView.findViewById(R.id.listView);
@@ -276,7 +293,7 @@ public class NavigationActivity extends AppCompatActivity
                 case 0:
                     return "Theory";
                 case 1:
-                    return "Practical";
+                    return "Favourite";
                 /*case 2:
                     return "SECTION 3";*/
             }
