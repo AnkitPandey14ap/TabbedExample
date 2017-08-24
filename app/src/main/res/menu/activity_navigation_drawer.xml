@@ -5,20 +5,31 @@
         <item
             android:id="@+id/nav_visitUs"
             android:icon="@drawable/browser_icon"
-            android:title="Visit us" />
-        <item
-            android:id="@+id/nav_language"
-            android:icon="@drawable/translator_icon"
-            android:title="Language" />
+            android:title="@string/visit_us" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Write us" />
+                android:title="@string/write_us" />
         </menu>
+    </item>
+
+    <item android:title="@string/language">
+        <menu>
+            <item
+                android:id="@+id/gu_language"
+                android:icon="@drawable/translator_icon"
+                android:title="@string/gujarati" />
+
+            <item
+                android:id="@+id/hi_language"
+                android:icon="@drawable/translator_icon"
+                android:title="@string/hindi" />
+        </menu>
+
     </item>
 
 </menu>

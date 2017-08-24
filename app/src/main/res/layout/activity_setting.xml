@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Text size"
+        android:text="@string/change_text_size"
         android:layout_marginLeft="64dp"
         android:textSize="16sp"
         android:textStyle="bold"/>
@@ -67,7 +67,7 @@
             android:id="@+id/writeToDevAction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Write to developer"
+            android:text="@string/write_to_developer"
             android:gravity="center_vertical"
             style="?android:attr/borderlessButtonStyle"/>
 
@@ -80,6 +80,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="done"
+        android:text="@string/done"
         android:layout_marginTop="@dimen/activity_vertical_margin"/>
 </RelativeLayout>

@@ -127,8 +127,27 @@ public class NavigationActivity extends AppCompatActivity
             intent.setData(Uri.parse("http://www.banaao.co.in"));
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_language) {
-            setLocale("hi");
+        } else if (id == R.id.gu_language) {
+//            setLocale("gu");
+
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+            //replace following link with your Gujrati app link here
+            intent.setData(Uri.parse("http://www.banaao.co.in"));
+            startActivity(intent);
+
+        }else if (id == R.id.hi_language) {
+//            setLocale("en");
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+            //replace following link with your Hindi app link here
+            intent.setData(Uri.parse("http://www.banaao.co.in"));
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_send) {
 
@@ -288,9 +307,9 @@ public class NavigationActivity extends AppCompatActivity
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Theory";
+                    return getString(R.string.theory);
                 case 1:
-                    return "Favourite";
+                    return getString(R.string.favourite);
                 /*case 2:
                     return "SECTION 3";*/
             }

@@ -1,0 +1,666 @@
+<div>
+    <div>
+        <div>
+            <img
+                src="http://www.electronics-tutorials.ws/wp-content/uploads/2016/08/acp305.gif"
+            />
+        </div>
+    </div>
+    <div>
+        <h1>
+            Power Triangle and Power Factor
+        </h1>
+        <p>
+            The three circuit elements which make up the electrical power
+            consumed in an AC circuit can be represented by the three sides of
+            a right angled triangle, known commonly as a power triangle.
+        </p>
+    </div>
+    <div>
+        <div>
+            <a
+                title="Facebook"
+                href="http://www.electronics-tutorials.ws/accircuits/power-triangle.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/fb-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                title="Twitter"
+                href="http://www.electronics-tutorials.ws/accircuits/power-triangle.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/tw-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                href="http://www.electronics-tutorials.ws/accircuits/power-triangle.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/more-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <div>
+            <p>
+                We saw in our tutorial about
+                <a
+                    href="http://www.electronics-tutorials.ws/accircuits/power-in-ac-circuits.html"
+                >
+                    Electrical Power
+                </a>
+                that AC circuits which contain resistance and capacitance or
+                resistance and inductance, or both, also contain real power and
+                reactive power. So in order for us to calculate the total power
+                consumed, we need to know the phase difference between the
+                sinusoidal waveforms of the voltage and current.
+            </p>
+            <p>
+                In an AC circuit, the voltage and current waveforms are
+                sinusoidal so their amplitudes are constantly changing over
+                time. Since we know that power is voltage times the current (P
+                = V*I), maximum power will occur when the two voltage and
+                current waveforms are lined up with each other. That is, their
+                peaks and zero crossover points occur at the same time. When
+                this happens the two waveforms are said to be “in-phase”.
+            </p>
+            <p>
+                The three main components in an AC circuit which can affect the
+                relationship between the voltage and current waveforms, and
+                therefore their phase difference, by defining the total
+                impedance of the circuit are the resistor, the capacitor and
+                the inductor.
+            </p>
+            <p>
+                The impedance, (Z) of an AC circuit is equivalent to the
+                resistance calculated in DC circuits, with impedance given in
+                ohms. For AC circuits, impedance is generally defined as the
+                ratio of the voltage and current phasor’s produced by a circuit
+                component. Phasor’s are straight lines drawn in such a way as
+                to represents a voltage or current amplitude by its length and
+                its phase difference with respect to other phasor lines by its
+                angular position relative to the other phasor’s.
+            </p>
+            <p>
+                AC circuits contain both resistance and reactance that are
+                combined together to give a total impedance (Z) that limits
+                current flow around the circuit. But an AC circuits impedance
+                is not equal to the algebraic sum of the resistive and reactive
+                ohmic values as a pure resistance and pure reactance are 90o
+                out-of-phase with each other. But we can use this 90o phase
+                difference as the sides of a right angled triangle, called an
+                impedance triangle, with the impedance being the hypotenuse as
+                determined by Pythagoras theorem.
+            </p>
+            <p>
+                This geometric relationship between resistance, reactance and
+                impedance can be represented visually by the use of an
+                impedance triangle as shown.
+            </p>
+            <h3>
+                Impedance Triangle
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp300.gif"
+                    alt="impedance triangle"
+                    title="Impedance Triangle"
+                    width="420"
+                    height="161"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Note that impedance, which is the vector sum of the resistance
+                and reactance, has not only a magnitude (Z) but it also has a
+                phase angle (θ), which represents the phase difference between
+                the resistance and the reactance. Also note that the triangle
+                will change shape due to variations in reactance, (X) as the
+                frequency changes. Of course, resistance (R) will always remain
+                constant.
+            </p>
+            <p>
+                We can take this idea one step further by converting the
+                impedance triangle into a power triangle representing the three
+                elements of power in an AC circuit. Ohms Law tells us that in a
+                DC circuit, power (P), in watts, is equal to the current
+                squared (I2) times the resistance (R). So we can multiply the
+                three sides of our impedance triangle above by I2 to obtain the
+                corresponding power triangle as:
+            </p>
+            <div>
+            </div>
+            <p>
+                Real Power P = I2R Watts, (W)
+            </p>
+            <div>
+            </div>
+            <p>
+                Reactive Power Q = I2X Volt-amperes Reactive, (VAr)
+            </p>
+            <div>
+            </div>
+            <p>
+                Apparent Power S = I2Z Volt-amperes, (VA)
+            </p>
+            <h2>
+                Real Power in AC Circuits
+            </h2>
+            <p>
+                Real power P, also known as true or active power, performs the
+                “real work” within an electrical circuit. Real power, measured
+                in watts, defines the power consumed by the resistive part of a
+                circuit. Then real power, P in an AC circuit is the same as
+                power, P in a DC circuit. So just like DC circuits, it is
+                always calculated as I2R, where R is the total resistive
+                component of the circuit.
+            </p>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp302.gif"
+                    alt="resistance phasor"
+                    title="Resistance Phasor"
+                    width="107"
+                    height="93"
+                />
+            </div>
+            <p>
+                As resistances do not produce any phasor difference (phase
+                shift) between voltage and current waveforms, all the useful
+                power is delivered directly to the resistance and converted to
+                heat, light and work. Then the power consumed by a resistance
+                is real power which is fundamentally the circuits average
+                power.
+            </p>
+            <p>
+                To find the corresponding value of the real power the rms
+                voltage and current values are multiplied by the cosine of the
+                phase angle, θ as shown.
+            </p>
+            <div>
+            </div>
+            <p>
+                Real Power P = I2R = V*I*cos(θ) Watts, (W)
+            </p>
+            <div>
+            </div>
+            <p>
+                But as their is no phase difference between the voltage and the
+                current in a resistive circuit, the phase shift between the two
+                waveforms will be zero (0). Then:
+            </p>
+            <h3>
+                Real Power in an AC Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp301.gif"
+                    alt="real power in an ac circuit"
+                    title="Real Power in an AC Circuit"
+                    width="302"
+                    height="240"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Where real power (P) is in watts, voltage (V) is in rms volts
+                and current (I) is in rms amperes.
+            </p>
+            <p>
+                Then real power is the I2R resistive element measured in watts,
+                which is what you read on your utility energy meter and has
+                units in Watts (W), Kilowatts (kW), and Megawatts (MW). Note
+                that real power, P is always positive.
+            </p>
+            <h2>
+                Reactive Power in AC Circuits
+            </h2>
+            <p>
+                Reactive power Q, (sometimes called wattless power) is the
+                power consumed in an AC circuit that does not perform any
+                useful work but has a big effect on the phase shift between the
+                voltage and current waveforms. Reactive power is linked to the
+                reactance produced by inductors and capacitors and counteracts
+                the effects of real power. Reactive power does not exist in DC
+                circuits.
+            </p>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp303.gif"
+                    alt="reactance phasor"
+                    title="Reactance Phasor"
+                    width="122"
+                    height="97"
+                />
+            </div>
+            <p>
+                Unlike real power (P) which does all the work, reactive power
+                (Q) takes power away from a circuit due to the creation and
+                reduction of both inductive magnetic fields and capacitive
+                electrostatic fields, thereby making it harder for the true
+                power to supply power directly to a circuit or load.
+            </p>
+            <p>
+                The power stored by an inductor in its magnetic field tries to
+                control the current, while the power stored by a capacitors
+                electrostatic field tries to control the voltage. The result is
+                that capacitors “generate” reactive power and inductors
+                “consume” reactive power. This means that they both consume and
+                return power to the source so none of the real power is
+                consumed.
+            </p>
+            <p>
+                To find reactive power, the rms voltage and current values are
+                multiplied by the sine of the phase angle, θ as shown.
+            </p>
+            <div>
+            </div>
+            <p>
+                Reactive Power Q = I2X = V*I*sin(θ) volt-amperes reactive,
+                (VAr’s)
+            </p>
+            <div>
+            </div>
+            <p>
+                As there is a 90o phase difference between the voltage and the
+                current waveforms in a pure reactance (either inductive or
+                capacitive), multiplying VI by sinθ gives a vertical component
+                that is 90o out-of-phase with each other, so:
+            </p>
+            <h3>
+                Reactive Power in an AC Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp304.gif"
+                    alt="reactive power in an ac circuit"
+                    title="Reactive Power in an AC Circuit"
+                    width="282"
+                    height="241"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Where reactive power (Q) is in volt-amperes reactive, voltage
+                (V) is in rms volts and current (I) is in rms amperes.
+            </p>
+            <p>
+                Then reactive power represents the product of volts and amperes
+                that are 90o out-of-phase with each other, but in general,
+                there can be any phase angle, θ between the voltage and the
+                current.
+            </p>
+            <p>
+                Thus reactive power is the I2X reactive element that has units
+                in volt-amperes reactive (VAr), Kilovolt-amperes reactive
+                (kVAr), and Megavolt-amperes reactive (MVAr).
+            </p>
+            <h2>
+                Apparent Power in AC Circuits
+            </h2>
+            <p>
+                We have seen above that real power is dissipated by resistance
+                and that reactive power is supplied to a reactance. As a result
+                of this the current and voltage waveforms are not in-phase due
+                to the difference between a circuits resistive and reactive
+                components.
+            </p>
+            <p>
+                Then there is a mathematical relationship between the real
+                power (P), and the reactive power (Q), called the complex
+                power. The product of the rms voltage, V applied to an AC
+                circuit and the rms current, I flowing into that circuit is
+                called the “volt-ampere product” (VA) given the symbol S and
+                whose magnitude is known generally as apparent power.
+            </p>
+            <p>
+                This complex Power is not equal to the algebraic sum of the
+                real and reactive powers added together, but is instead the
+                vector sum of P and Q given in volt-amps (VA). It is complex
+                power that is represented by the power triangle. The rms value
+                of the volt-ampere product is known more commonly as the
+                apparent power as, “apparently” this is the total power
+                consumed by a circuit even though the real power that does the
+                work is a lot less.
+            </p>
+            <p>
+                As apparent power is made up of two parts, the resistive power
+                which is the in-phase power or real power in watts and the
+                reactive power which is the out-of-phase power in volt-amperes,
+                we can show the vector addition of these two power components
+                in the form of a power triangle. A power triangle has four
+                parts: P, Q, S and θ.
+            </p>
+            <p>
+                The three elements which make up power in an AC circuit can be
+                represented graphically by the three sides of a right-angled
+                triangle, in much the same way as the previous impedance
+                triangle. The horizontal (adjacent) side represents the
+                circuits real power (P), the vertical (opposite) side
+                represents the circuits reactive power (Q) and the hypotenuse
+                represents the resulting apparent power (S), of the power
+                triangle as shown.
+            </p>
+            <h3>
+                Power Triangle of an AC Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp305.gif"
+                    alt="power triangle of an ac circuit"
+                    title="Power Triangle of an AC Circuit"
+                    width="332"
+                    height="156"
+                />
+            </p>
+            <ul>
+                <li>
+                    Where:
+                </li>
+                <li>
+                    P is the I2R or Real power that performs work measured in
+                    watts, W
+                </li>
+                <li>
+                    Q is the I2X or Reactive power measured in volt-amperes
+                    reactive, VAr
+                </li>
+                <li>
+                    S is the I2Z or Apparent power measured in volt-amperes, VA
+                </li>
+                <li>
+                    θ is the phase angle in degrees. The larger the phase
+                    angle, the greater the reactive power
+                </li>
+                <li>
+                    Cosθ = P/S = W/VA = power factor, p.f.
+                </li>
+                <li>
+                    Sinθ = Q/S = VAr/VA
+                </li>
+                <li>
+                    Tanθ = Q/P = VAr/W
+                </li>
+            </ul>
+            <p>
+                The power factor is calculated as the ratio of the real power
+                to the apparent power because this ratio equals cosθ.
+            </p>
+            <h2>
+                Power Factor in AC Circuits
+            </h2>
+            <p>
+                Power factor, cosθ, is an important part of an AC circuit that
+                can also be expressed in terms of circuit impedance or circuit
+                power. Power factor is defined as the ratio of real power (P)
+                to apparent power (S), and is generally expressed as either a
+                decimal value, for example 0.95, or as a percentage: 95%.
+            </p>
+            <p>
+                Power factor defines the phase angle between the current and
+                voltage waveforms, were I and V are the magnitudes of rms
+                values of the current and voltage. Note that it does not matter
+                whether the phase angle is the difference of the current with
+                respect to the voltage, or the voltage with respect to the
+                current. The mathematical relationship is given as:
+            </p>
+            <h3>
+                Power Factor of an AC Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp306.gif"
+                    alt="power factor of an ac circuit"
+                    title="Power Factor of an AC Circuit"
+                    width="408"
+                    height="137"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                We said previously that in a pure resistive circuit, the
+                current and voltage waveforms are in-phase with each other so
+                the real power consumed is the same as the apparent power as
+                the phase difference is zero degrees (0o). So the power factor
+                will be:
+            </p>
+            <div>
+            </div>
+            <p>
+                Power Factor, pf = cos 0o = 1.0
+            </p>
+            <div>
+            </div>
+            <p>
+                That is the number of watts consumed is the same as the number
+                of volt-amperes consumed producing a power factor of 1.0, or
+                100%. In this case it is referred to a unity power factor.
+            </p>
+            <p>
+                We also said above that in a purely reactive circuit, the
+                current and voltage waveforms are out-of-phase with each other
+                by 90o. As the phase difference is ninety degrees (90o), the
+                power factor will be:
+            </p>
+            <div>
+            </div>
+            <p>
+                Power Factor, pf = cos 90o = 0
+            </p>
+            <div>
+            </div>
+            <p>
+                That is the number of watts consumed is zero but there is still
+                a voltage and current supplying the reactive load. Clearly then
+                reducing the reactive VAr component of the power triangle will
+                cause θ to reduce improving the power factor towards one,
+                unity. It is also desirable to have a high power factor as this
+                makes the most efficient use of the circuit delivering current
+                to a load.
+            </p>
+            <p>
+                Then we can write the relationship between the real power, the
+                apparent power and the circuits power factor as:
+            </p>
+            <div>
+            </div>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp313.gif"
+                    alt="active and reactive power equation"
+                    title="Active Reactive Power Equation"
+                    width="497"
+                    height="118"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                An inductive circuit where the current “lags” the voltage (ELI)
+                is said to have a lagging power factor, and a capacitive
+                circuit where the current “leads” the voltage (ICE) is said to
+                have a leading power factor.
+            </p>
+            <h2>
+                Power Triangle Example No1
+            </h2>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp307.gif"
+                    alt="solenoid coil"
+                    title="Solenoid Coil"
+                    width="202"
+                    height="150"
+                />
+            </div>
+            <p>
+                A wound coil that has an inductance of 180mH and a resistance
+                of 35Ω is connected to a 100V 50Hz supply. Calculate: a) the
+                impedance of the coil, b) the current, c) the power factor, and
+                d) the apparent power consumed.
+            </p>
+            <p>
+                Also draw the resulting power triangle for the above coil.
+            </p>
+            <p>
+                Data given: R = 35Ω, L = 180mH, V = 100V and ƒ = 50Hz.
+            </p>
+            <p>
+                (a) Impedance (Z) of the coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp308.gif"
+                    alt="impedance of a solenoid coil"
+                    title="Impedance of a Solenoid Coil"
+                    width="448"
+                    height="169"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (b) Current (I) consumed by the coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp309.gif"
+                    alt="current consumed by a solenoid coil"
+                    title="Current Consumed by a Solenoid Coil"
+                    width="309"
+                    height="109"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (c) The power factor and phase angle, θ:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp310.gif"
+                    alt="phase angle between current and voltage"
+                    title="Phase Angle between Current and Voltage"
+                    width="446"
+                    height="209"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (d) Apparent power (S) consumed by the coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp311.gif"
+                    alt="apparent power consumed"
+                    title="Average AC Power Consumed"
+                    width="532"
+                    height="341"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (e) Power triangle for the coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp312.gif"
+                    alt="power triangle of coil"
+                    title="Power Triangle of Coil"
+                    width="325"
+                    height="314"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                As the power triangle relationships of this simple example
+                demonstrates, at 0.5263 or 52.63% power factor, the coil
+                requires 150 VA of power to produce 79 Watts of useful work. In
+                other words, at 52.63% power factor, the coil takes about 88%
+                more current to do the same work, which is a lot of wasted
+                current.
+            </p>
+            <p>
+                Adding a power factor correction capacitor (for this example a
+                32.3uF) across the coil, in order to increase the power factor
+                to over 0.95, or 95%, would greatly reduce the reactive power
+                consumed by the coil as these capacitors act as reactive
+                current generators, thus reducing the total amount of current
+                consumed.
+            </p>
+            <h2>
+                Power Triangle and Power Factor Summary
+            </h2>
+            <p>
+We have seen here that the three elements of electrical power,<em>Real Power</em>, <em>Reactive Power</em> and                <em>Apparent Power</em> in an AC circuit can be represented by
+                the three sides of a triangle called a Power Triangle. As these
+                three elements are represented by a “right-angled triangle”,
+                their relationship can be defined as: S2 = P2 + Q2, where P is
+                the real power in watts (W), Q is the reactive power in
+                volt-amperes reactive (VAr) and S is the apparent power in
+                volt-amperes (VA).
+            </p>
+            <p>
+                We have also seen that in an AC circuit, the quantity cosθ is
+                called the power factor. The power factor of an AC circuit is
+                defined as the ratio of the real power (W) consumed by a
+                circuit to the apparent power (VA) consumed by the same
+                circuit. This therefore gives us: Power Factor = Real
+                Power/Apparent Power, or pf = W/VA.
+            </p>
+            <p>
+                Then the cosine of the resulting angle between the current and
+                voltage is the power factor. Generally power factor is
+                expressed as a percentage, for example 95%, but can also be
+                expressed as a decimal value, for example 0.95.
+            </p>
+            <p>
+                When the power factor equals 1.0 (unity) or 100%, that is when
+                the real power consumed equals the circuits apparent power, the
+                phase angle between the current and the voltage is 0o as:
+                cos-1(1.0) = 0o. When the power factor equals zero (0), the
+                phase angle between the current and the voltage will be 90o as:
+                cos-1(0) = 90o. In this case the actual power consumed by the
+                AC circuit is zero regardless of the circuit current.
+            </p>
+            <p>
+                In practical AC circuits, the power factor can be anywhere
+                between 0 and 1.0 depending on the passive components within
+                the connected load. For an inductive-resistive load or circuit
+                (which is most often the case) the power factor will be
+                “lagging”. In a capacitive-resistive circuit the power factor
+                will be “leading”. Then an AC circuit can be defined to have a
+                unity, lagging, or leading power factor.
+            </p>
+            <p>
+                A poor power factor with a value towards zero (0) will consume
+                wasted power reducing the efficiency of the circuit, while a
+                circuit or load with a power factor closer to one (1.0) or
+                unity (100%), will be more efficient. This is because a a
+                circuit or load with a low power factor requires more current
+                than the same circuit or load with a power factor closer to 1.0
+                (unity).
+            </p>
+        </div>
+    </div>
+</div>

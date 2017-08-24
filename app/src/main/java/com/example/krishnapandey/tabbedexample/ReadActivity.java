@@ -105,12 +105,12 @@ public class ReadActivity extends AppCompatActivity {
         }
         if(id==R.id.favouriteButton){
             if(star){
-                Toast.makeText(this, "Removed from Favourite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.removed_from_favourite, Toast.LENGTH_SHORT).show();
                 star = false;
                 item.setIcon(R.drawable.heart_unchecked);
             }
             else{
-                Toast.makeText(this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.added_to_favourite, Toast.LENGTH_SHORT).show();
                 star = true;
                 item.setIcon(R.drawable.heart_checked);
             }

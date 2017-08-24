@@ -13,4 +13,22 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="change_text_size">Change Text size</string>
+    <string name="write_to_developer">Write to developer</string>
+    <string name="done">done</string>
+    <string name="theory">Theory</string>
+    <string name="favourite">Favourite</string>
+    <string name="added_to_favourite">Added to Favourite</string>
+    <string name="removed_from_favourite">Removed from Favourite</string>
+    <string name="write_us">Write us</string>
+    <string name="gujarati">ગુજરાતી</string>
+    <string name="english">English</string>
+    <string name="language">Language</string>
+    <string name="visit_us">Visit us</string>
+    <string name="communicate">Communicate</string>
+    <string name="hindi">हिंदी</string>
+
+
 </resources>

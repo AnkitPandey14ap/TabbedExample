@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Banaao Electronics Tutorial</string>
+    <string name="action_settings"></string>
+    <string name="change_text_size">ટેક્સ્ટનું કદ બદલો</string>
+    <string name="done">કર્યું</string>
+    <string name="favourite">પ્રિય</string>
+    <string name="theory">સિદ્ધાંત</string>
+    <string name="title_home">ઘર</string>
+    <string name="write_to_developer">વિકાસકર્તાને લખો</string>
+    <string name="removed_from_favourite">મનપસંદ માંથી દૂર</string>
+    <string name="added_to_favourite">મનપસંદમાં ઉમેરાયું</string>
+    <string name="write_us">અમને લખો</string>
+    <string name="visit_us">અમારી મુલાકાત લો</string>
+    <string name="gujarati">ગુજરાતી</string>
+    <string name="language">ભાષા</string>
+    <string name="communicate">વાતચીત</string>
+</resources>
