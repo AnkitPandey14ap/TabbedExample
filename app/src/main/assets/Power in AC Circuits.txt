@@ -1,55 +1,821 @@
-<html>
-<head>
-
-    <link href="//fonts.googleapis.com/css?family=Open+Sans"  href="cjcj.css?family=Open+Sans" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
-    <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,user-scalable=yes">
-
-</head>
-
-<body>
-<p style="text-align: justify">
-
-A resistor is an electrical device that resists the flow of electrical current. In the digital era, we can find a variety of “digital resistors” for our everyday applications. This article is about digital potentiometers. A digital potentiometer (digital pot) is a variable resistor that is controlled by digital signals instead of by mechanical movement. In principle, at the heart of a digital potentiometer is a resistor ladder with electronic switches at its every step. Only one electronic switch is closed at the same time, and in this way, the closed switch determines the wiper position and the resistance ratio. The amount of steps in the ladder determines the resolution of the digital potentiometer.
-<br/>
-dpot 2
-<br/>
-Digital potentiometers are integrated circuits with the initial position of the wiper at the midscale. However, some variants have an on-board (non-volatile) memory that remembers the last wiper position. Something to take into account when you start working with digital potentiometers is the fact that most of them are rated at 5 Vdc, and 10 KΩ is the most popular value.
-<br/>
-The MCP41010
-<br/>
-MPC41010 is a tiny digital potentiometer from Microchip with a maximum resistance value of 10 KΩ (minimum value 100 Ω). The MCP41010 is a single-channel, 256-position digital potentiometer available in an 8-pin PDIP or SOIC package.
-<br/>
-mcp41010
-<br/>
-Now to the pin description of MCP41010:
-<br/>
-PA0: Potentiometer Terminal A<br/>
-PB0: Potentiometer Terminal B<br/>
-PW0: Potentiometer Wiper
-<br/>CS: Chip Select (SPI port chip select pin used to execute a new command after it has been loaded into the shift register)
-SCK: Serial Clock (SPI port clock pin used to clock in new register data)
-SI: Serial Data Input (SPI port serial data input pin. The command and data bytes are clocked into the shift register using this pin)
-VDD &VSS: Power supply terminals (2.7 V–5.5 V)
-MCP41010 & Arduino Test
-<br/>
-As you may have noticed, a digital potentiometer behaves the same as a mechanical potentiometer, except that instead of having a round handle that you can turn, it’s controlled by a digital interface. As a basic test, you can drive MCP41010 with the help of an Arduino UNO and its Serial Peripheral Interface (SPI) port. Note that SPI is a “synchronous” serial data bus — data can travel in both directions at the same time. On Arduino Uno (and compatible) boards, the SPI pins used are:
-<br/>
-SS – D10 (you can use other digital pins, but D10 is the default)
-MOSI – D11<br/>
-MISO – D12<br/>
-SCK – D13<br/>
-Just refer to the datasheet and note that to program the digital pot, you have to first send a “command byte” (to tell the chip what to do) and a “data byte” (to tell the chip which value of resistance to set, from 0 to 255). As found in the datasheet, “executing any command is accomplished by setting CS low and then clocking in a command byte followed by a data byte into the 16-bit shift register. The command is executed when CS is raised.” Now prepare your hardware setup as follows!
-<br/>
-arduino
-<br/>
-In the hardware setup, MCP41010 is connected to the Arduino via the Arduino’s SPI Interface. Potentiometer terminals A (pin 5) and B (pin 7) are connected to the Arduino 5-volt supply (5 V) and Ground (Gnd). The wiper terminal W (pin 6) is connected to the Analog Pin 1 (A1) of the Arduino. The pretty simple sketch (shown below) loaded into the Arduino selects the MCP41010 and cycles through all 256 wiper positions (about 39 Ω per step). The voltage at the analog pin is then read and displayed on the serial monitor.
-
-
-</p>
-
-</body>
-
-
-</html>
+<div>
+    <div>
+        <div>
+            <img
+                src="http://www.electronics-tutorials.ws/wp-content/uploads/2016/07/acp292.gif"
+            />
+        </div>
+    </div>
+    <div>
+        <h1>
+            Power in AC Circuits
+        </h1>
+        <p>
+            In a direct current circuit, the power consumed is simply the
+            product of the dc voltage times the DC current, VxI and is measured
+            in watts. However, we can not calculate it in a similar manner for
+            reactive AC circuits.
+        </p>
+    </div>
+    <div>
+        <div>
+            <a
+                title="Facebook"
+                href="http://www.electronics-tutorials.ws/accircuits/power-in-ac-circuits.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/fb-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                title="Twitter"
+                href="http://www.electronics-tutorials.ws/accircuits/power-in-ac-circuits.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/tw-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                href="http://www.electronics-tutorials.ws/accircuits/power-in-ac-circuits.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/more-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <div>
+            <p>
+                Electrical power is the “rate” at which energy is being
+                consumed in a circuit and as such all electrical and electronic
+                components and devices have a limit to the amount of electrical
+                power that they can safely handle. For example, a 1/4 watt
+                resistor or a 20 watt amplifier.
+            </p>
+            <p>
+                Electrical power can be time-varying either as a DC quantity or
+                as an AC quantity. The amount of power in a circuit at any
+                instant of time is called the <em>instantaneous power</em>and
+                is given by the well-known relationship of P = VI. So one watt
+                (which is the rate of expending energy at one joule per second)
+                will be equal to the volt-ampere product of one volt times one
+                ampere.
+            </p>
+            <p>
+                Then the power absorbed or supplied by a circuit element is the
+                product of the voltage, V across the element, and the current,
+                I flowing through it. So if we had a DC circuit with a
+                resistance of “R” ohms, the power dissipated by the resistor in
+                watts is given by any of the following generalised formulas:
+            </p>
+            <h3>
+                Electrical Power
+            </h3>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp275.gif"
+                    alt="dc power formula"
+                    title="DC Power Formula"
+                    width="372"
+                    height="57"
+                />
+            </div>
+            <div>
+            </div>
+            <p>
+                Where: V is the dc voltage, I is the dc current and R is the
+                value of the resistance.
+            </p>
+            <p>
+                So power within an electrical circuit is only present when both
+                the voltage and current are present, that is no open-circuit or
+                closed-circuit conditions. Consider the following simple
+                example of a standard resistive dc circuit:
+            </p>
+            <h3>
+                DC Resistive Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp276.gif"
+                    alt="dc resistive circuit"
+                    title="DC Resistive Circuit"
+                    width="357"
+                    height="145"
+                />
+            </p>
+            <h2>
+                Electrical Power in an AC Circuit
+            </h2>
+            <p>
+                In a DC circuit, the voltages and currents are generally
+                constant, that is not varying with time as there is no
+                sinusoidal waveform associated with the supply. However in an
+                AC circuit, the instantaneous values of the voltage, current
+                and therefore power are constantly changing being influenced by
+                the supply. So we can not calculate the power in AC circuits in
+                the same manner as we can in DC circuits, but we can still say
+                that power (p) is equal to the voltage (v) times the amperes
+                (i).
+            </p>
+            <p>
+                Another important point is that AC circuits contain reactance,
+                so there is a power component as a result of the magnetic
+                and/or electric fields created by the components. The result is
+                that unlike a purely resistive component, this power is not
+                only consumed but instead is stored and then returned back to
+                the supply as the sinusoidal waveform goes through one complete
+                periodic cycle.
+            </p>
+            <p>
+                Thus, the average power absorbed by a circuit is the sum of the
+                power stored and the power returned over one complete cycle. So
+                a circuits average power consumption will be the average of the
+                instantaneous power over one full cycle with the instantaneous
+                power, p defined as the multiplication of the instantaneous
+                voltage, v by the instantaneous current, i. Note that as the
+                sine function is periodic and continuous, the average power
+                given over all time will be exactly the same as the average
+                power given over a single cycle.
+            </p>
+            <p>
+                Let us assume that the waveforms of the voltage and current are
+                both sinusoidal, so we recall that:
+            </p>
+            <h3>
+                Sinusoidal Voltage Waveform
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp277.gif"
+                    alt="sinusoidal voltage waveform"
+                    title="Sinusoidal Voltage Waveform"
+                    width="428"
+                    height="172"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                As the instantaneous power is the power at any instant of time,
+                then:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp278.gif"
+                    alt="instantaneous ac power"
+                    title="Instantaneous AC Power"
+                    width="453"
+                    height="289"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Applying the trigonometric product-to-sum identity of:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp279.gif"
+                    alt="product to sum trigonometric identity"
+                    title="Product to Sum Trigonometric Identity"
+                    width="474"
+                    height="50"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                and θ = θv – θi (the phase difference between the voltage and
+                the current waveforms) into the above equation gives:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp280.gif"
+                    alt="electrical power formula"
+                    title="Electrical Power Formula"
+                    width="496"
+                    height="152"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Where V and I are the root-mean-squared (rms) values of the
+                sinusoidal waveforms, <em>v</em> and <em>i</em> respectively,
+                and θ is the phase difference between the two waveforms.
+                Therefore we can express the instantaneous power as being:
+            </p>
+            <h3>
+                Instantaneous AC Power Equation
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp281.gif"
+                    alt="instantaneous ac power equation"
+                    title="Instantaneous AC Power Equation"
+                    width="356"
+                    height="41"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                This equation shows us that the instantaneous AC power has two
+                different parts and is therefore the sum of these two terms.
+                The second term is a time varying sinusoid whose frequency is
+                equal to twice the angular frequency of the supply due to the
+                2ω part of the term. The first term however is a constant whose
+                value depends only on the phase difference, θ between the
+                voltage, (V) and the current, (I).
+            </p>
+            <p>
+                As the instantaneous power is constantly changing with the
+                profile of the sinusoid over time, this makes it difficult to
+                measure. It is therefore more convenient, and easier on the
+                maths to use the average or mean value of the power. So over a
+                fixed number of cycles, the average value of the instantaneous
+                power of the sinusoid is given simply as:
+            </p>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp282.gif"
+                    alt="average ac power equation"
+                    title="Average AC Power Equation"
+                    width="172"
+                    height="33"
+                />
+            </div>
+            <div>
+            </div>
+            <p>
+                where V and I are the sinusoids rms values, and θ (Theta) is
+                the phase angle between the voltage and the current. The units
+                of power are in watts (W).
+            </p>
+            <p>
+                The AC Power dissipated in a circuit can also be found from the
+                impedance, Z of the circuit using the voltage, Vrms or the
+                current, Irms flowing through the circuit as shown.
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp282a.gif"
+                    alt="ac power using impedance"
+                    title="AC Power Using Impedance"
+                    width="504"
+                    height="228"
+                />
+            </p>
+            <h2>
+                AC Power Example No1
+            </h2>
+            <p>
+                The voltage and current values of a 50Hz sinusoidal supply are
+                given as: vt = 240 sin(ωt +60o)Volts and it = 5 sin(ωt
+                -10o)Amps respectively. Find the values of the instantaneous
+                power and the average power absorbed by the circuit.
+            </p>
+            <p>
+                From above, the instantaneous power absorbed by the circuit is
+                given as:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp283.gif"
+                    alt="instantaneous power example"
+                    title="Instantaneous Power Example"
+                    width="514"
+                    height="233"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Applying the trigonometric identity rule from above gives:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/uploads/2017/03/acp284.gif"
+                    alt="trigonometric identity example"
+                    title="Trigonometric Identity Example"
+                    width="544"
+                    height="421"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                The average power is then calculated as:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp285.gif"
+                    alt="average ac power"
+                    title="Average AC Power"
+                    width="454"
+                    height="221"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                You may have noticed that the average power value of 205.2
+                watts is also the first term value of the instantaneous power
+                p(t) as this first term constant value is the average or mean
+                rate of energy change between the source and load.
+            </p>
+            <h2>
+                AC Power in a Purely Resistive Circuit
+            </h2>
+            <p>
+                We have seen thus far, that in a dc circuit, power is equal to
+                the product of voltage and current and this relationship is
+                also true for a purely resistive AC circuit. Resistors are
+                electrical devices that consume energy and the power in a
+                resistor is given by p = VI = I2R = V2/R. This power is always
+                positive.
+            </p>
+            <p>
+                Consider the following purely resistive (that is infinite
+                capacitance, C = ∞ and zero inductance, L = 0) circuit with a
+                resistor connected to an AC supply, as shown.
+            </p>
+            <h3>
+                Purely Resistive Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp286.gif"
+                    alt="purely resistive circuit"
+                    title="Purely Resistive Circuit"
+                    width="468"
+                    height="146"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                When a pure resistor is connected to a sinusoidal voltage
+                supply, the current flowing through the resistor will vary in
+                proportion to the supply voltage, that is the voltage and
+                current waveforms are “in-phase” with each other. Since the
+                phase difference between the voltage waveform and the current
+                waveform is 0o, the phase angle resulting in cos 0o will be
+                equal to 1.
+            </p>
+            <p>
+                Then the electrical power consumed by the resistor is given by:
+            </p>
+            <h3>
+                Electrical Power in a Pure Resistor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp287.gif"
+                    alt="power in a pure resistor"
+                    title="Power in a Pure Resistor"
+                    width="358"
+                    height="173"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                As the voltage and current waveforms are in-phase, that is both
+                waveforms reach their peak values at the same time, and also
+                pass through zero at the same time, the power equation above
+                reduces down to just VxI. Therefore the the power at any
+                instant can be found by multiplying together the two waveforms
+                to give the volt-ampere product. This is called the “Real
+                Power”, (P) measured in watts, (W), Kilowatt (kW), Megawatt
+                (MW), etc.
+            </p>
+            <h3>
+                AC Power Waveforms for a Pure Resistor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp288.gif"
+                    alt="waveform diagram for a pure resistor"
+                    title="Waveform Diagram for a Pure Resistor"
+                    width="341"
+                    height="228"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                The diagram shows the voltage, current and corresponding power
+                waveforms. As the voltage and current waveforms are both
+                in-phase, during the positive half-cycle, when the voltage is
+                positive, the current is also positive so the power is
+                positive, as a positive times a positive equals a positive.
+                During the negative half-cycle, the voltage in negative, so to
+                is the current resulting in the power being positive, as a
+                negative times a negative equals a positive.
+            </p>
+            <p>
+                Then in a purely resistive circuit, electrical power is
+                consumed ALL the time that current is flowing through the
+                resistor and is given as: P = VxI = I2R watts. Note that both V
+                and I can be their rms values where: V = IxR and I = V/R.
+            </p>
+            <h2>
+                AC Power in a Purely Inductive Circuit
+            </h2>
+            <p>
+                In a purely inductive (that is infinite capacitance, C = ∞ and
+                zero resistance, R = 0) circuit of L henries, the voltage and
+                current waveforms are not in-phase. Whenever a changing voltage
+                is applied to a purely inductive coil, a “back” emf is produced
+                by the coil due to its self-inductance. This self-inductance
+                opposes and limits any changes to the current flowing in the
+                coil.
+            </p>
+            <p>
+                The effects of this back emf is that the current cannot
+                increase immediately through the coil in-phase with the applied
+                voltage causing the current waveform to reach its peak or
+                maximum value some time after that of the voltage. The result
+                is that in a purely inductive circuit, the current always
+                “lags” (ELI) behind the voltage by 90o (π/2) as shown.
+            </p>
+            <h3>
+                Purely Inductive Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp289.gif"
+                    alt="purely inductive circuit"
+                    title="Purely Inductive Circuit"
+                    width="468"
+                    height="142"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                The waveforms above shows us the instantaneous voltage and
+                instantaneous current across a purely inductive coil as a
+                function of time. Maximum current, Im occurs at one full
+                quarter of a cycle (90o) after the maximum (peak) value of the
+                voltage. Here the current is shown with its negative maximum
+                value at the start of the voltage cycle and passes through zero
+                increasing to its positive maximum value when the voltage
+                waveform is at its maximum value at 90o.
+            </p>
+            <p>
+                Thus as the voltage and current waveforms are no longer rising
+                and falling together, but instead a phase shift of 90o (π/2) is
+                introduced in the coil, then the voltage and current waveforms
+                are “out-of-phase” with each other as the voltage leads the
+                current by 90o. Since the phase difference between the voltage
+                waveform and the current waveform is 90o, then the phase angle
+                resulting in cos 90o = 0.
+            </p>
+            <p>
+                Therefore the electrical power consumed by a pure inductor, QL
+                is given by:
+            </p>
+            <h3>
+                Real Power in a Pure Inductor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp290.gif"
+                    alt="real power in a pure inductor"
+                    title="Real Power in a Pure Inductor"
+                    width="293"
+                    height="173"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Clearly then, a pure inductor does not consume or dissipate any
+                real or true power, but as we have both voltage and current the
+                use of cosθ in the expression: P = IVcosθ for a pure inductor
+                is no longer valid. The product of the current and the voltage
+                in this case is imaginary power, commonly called “Reactive
+                Power”, (Q) measured in voltamperes reactive, (VAr),
+                Kilo-voltamperes reactive (KVAr), etc.
+            </p>
+            <p>
+                Voltamperes reactive, VAr should not be confused with watts, W
+                which is used for real power. VAr represents the product of the
+                volts and amperes that are 90o out-of-phase with each other. To
+                identify the reactive average power mathematically, the sine
+                function is used. Then the equation for the average reactive
+                power in an inductor becomes:
+            </p>
+            <h3>
+                Reactive Power in a Pure Inductor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp291.gif"
+                    alt="reactive power in a pure inductor"
+                    title="Reactive Power in a Pure Inductor"
+                    width="338"
+                    height="176"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Like real power, P, reactive power, Q also depends on voltage
+                and current, but also the phase angle between them. It is
+                therefore the product of the applied voltage and the component
+                part of the current which is 90o out-of-phase with the voltage
+                as shown.
+            </p>
+            <h3>
+                AC Power Waveforms for a Pure Inductor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp292.gif"
+                    alt="waveform diagram for a pure inductor"
+                    title="Waveform Diagram for a Pure Inductor"
+                    width="380"
+                    height="231"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                In the positive half of the voltage waveform between the angle
+                of 0o and 90o, the inductor current is negative while the
+                supply voltage is positive. Therefore, the volts and ampere
+                product gives a negative power as a negative times a positive
+                equals a negative. Between 90o and 180o, both current and
+                voltage waveforms are positive in value resulting in positive
+                power. This positive power indicates that the coil is consuming
+                electrical energy from the supply.
+            </p>
+            <p>
+                In the negative half of the voltage waveform between 180o and
+                270o, there is a negative voltage and positive current
+                indicating a negative power. This negative power indicates that
+                the coil is returning the stored electrical energy back to the
+                supply. Between 270oand 360o, both the inductors current and
+                the supply voltage are both negative resulting in a period of
+                positive power.
+            </p>
+            <p>
+                Then during one full-cycle of the voltage waveform we have two
+                identical positive and negative pulses of power whose average
+                value is zero so no real power is used up since the power
+                alternately flows to and from the source. This means then that
+                the total power taken by a pure inductor over one full-cycle is
+                zero, so an inductors reactive power does not perform any real
+                work.
+            </p>
+            <h2>
+                AC Power in a Purely Capacitive Circuit
+            </h2>
+            <p>
+                A purely capacitive (that is zero inductance, L = 0 and
+                infinite resistance, R = ∞) circuit of C Farads, has the
+                property of delaying changes in the voltage across it.
+                Capacitors store electrical energy in the form of an electric
+                field within the dielectric so a pure capacitor does not
+                dissipate any energy but instead stores it.
+            </p>
+            <p>
+                In a purely capacitive circuit the voltage cannot increase
+                in-phase with the current as it needs to “charge-up” the
+                capacitors plates first. This causes the voltage waveform to
+                reach its peak or maximum value some time after that of the
+                current. The result is that in a purely capacitive circuit, the
+                current always “leads” (ICE) the voltage by 90o (ω/2) as shown.
+            </p>
+            <h3>
+                Purely Capacitive Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp293.gif"
+                    alt="purely capacitive circuit"
+                    title="Purely Capacitive Circuit"
+                    width="457"
+                    height="150"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                The waveform shows us the voltage and current across a pure
+                capacitor as a function of time. Maximum current, Im occurs a
+                one full quarter of a cycle (90o) before the maximum (peak)
+                value of the voltage. Here the current is shown with its
+                positive maximum value at the start of the voltage cycle and
+                passes through zero, decreasing to its negative maximum value
+                when the voltage waveform is at its maximum value at 90o. The
+                opposite phase shift to the purely inductive circuit.
+            </p>
+            <p>
+                Thus for a purely capacitive circuit, the phase angle θ = -90o
+                and the equation for the average reactive power in a capacitor
+                becomes:
+            </p>
+            <h3>
+                Reactive Power in a Pure Capacitor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp294.gif"
+                    alt="reactive power in a pure capacitor"
+                    title="Reactive Power in a Pure Capacitor"
+                    width="357"
+                    height="177"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Where -VIsinθ is a negative sine wave. Also the symbol for
+                capacitive reactive power is QC with the same unit of measure,
+                the voltampere reactive (VAR) as that of the inductor. Then we
+                can see that just like a purely inductive circuit above, a pure
+                capacitor does not consume or dissipate any real or true power,
+                P.
+            </p>
+            <h3>
+                AC Power Waveforms for a Pure Capacitor
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp295.gif"
+                    alt="waveform diagram for a pure capacitor"
+                    title="Waveform Diagram for a Pure Capacitor"
+                    width="379"
+                    height="238"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                In the positive half of the voltage waveform between the angle
+                of 0o and 90o, both the current and voltage waveforms are
+                positive in value resulting in positive power being consumed.
+                Between 90o and 180o, the capacitor current is negative and the
+                supply voltage is still positive. Therefore, the voltampere
+                product gives a negative power as a negative times a positive
+                equals a negative. This negative power indicates that the coil
+                is returning stored electrical energy back to the supply.
+            </p>
+            <p>
+                In the negative half of the voltage waveform between 180o and
+                270o, both the capacitors current and the supply voltage are
+                negative in value resulting in a period of positive power. This
+                period of positive power indicates that the coil is consuming
+                electrical energy from the supply. Between 270o and 360o, there
+                is a negative voltage and positive current indicating once
+                again a negative power.
+            </p>
+            <p>
+                Then during one full-cycle of the voltage waveform the same
+                situation exists as for the purely inductive circuit in that we
+                have two identical positive and negative pulses of power whose
+                average value is zero. Thus the power delivered from the source
+                to the capacitor is exactly equal to the power returned to the
+                source by the capacitor so no real power is used up since the
+                power alternately flows to and from the source. This means then
+                that the total power taken by a pure capacitor over one
+                full-cycle is zero, so the capacitors reactive power does not
+                perform any real work.
+            </p>
+            <h2>
+                Electrical Power Example No2
+            </h2>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp296a.gif"
+                    alt="solenoid coil"
+                    title="Solenoid Coil"
+                    width="181"
+                    height="130"
+                />
+            </div>
+            <p>
+                A solenoid coil with a resistance of 30 ohms and an inductance
+                of 200mH is connected to a 230VAC, 50Hz supply. Calculate: (a)
+                the solenoids impedance, (b) the current consumed by the
+                solenoid, (c) the phase angle between the current and the
+                applied voltage, and (d) the average power consumed by the
+                solenoid.
+            </p>
+            <p>
+                Data given: R = 30Ω, L = 200mH, V = 230V and ƒ = 50Hz.
+            </p>
+            <p>
+                (a) Impedance (Z) of the solenoid coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp296.gif"
+                    alt="impedance of a solenoid coil"
+                    title="Impedance of a Solenoid Coil"
+                    width="444"
+                    height="177"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (b) Current (I) consumed by the solenoid coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp297.gif"
+                    alt="current consumed by a solenoid coil"
+                    title="Current Consumed by a Solenoid Coil"
+                    width="317"
+                    height="109"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (c) The phase angle, θ:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp298.gif"
+                    alt="phase angle between current and voltage"
+                    title="Phase Angle between Current and Voltage"
+                    width="441"
+                    height="209"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                (d) Average AC power consumed by the solenoid coil:
+            </p>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/accircuits/acp299.gif"
+                    alt="average ac power consumed"
+                    title="Average AC Power Consumed"
+                    width="302"
+                    height="173"
+                />
+            </p>
+            <h2>
+                AC Electrical Power Summary
+            </h2>
+            <p>
+                We have seen here that in AC circuits, the voltage and current
+                flowing in a purely passive circuit are normally out-of-phase
+                and, as a result, they can not be used to accomplish any real
+                work. We have also seen that in a direct current (DC) circuit,
+                electrical power is equal to the voltage times the current, or
+                P = VxI, but we can not calculate it in the same manner as for
+                AC circuits as we need to take into account any phase
+                difference.
+            </p>
+            <p>
+                In a purely resistive circuit, the current and voltage are both
+                in-phase and all the electrical power is consumed by the
+                resistance, usually as heat. As a result, none of the
+                electrical power is returned back to the source supply or
+                circuit.
+            </p>
+            <p>
+                However, in a purely inductive or a purely capacitive circuit
+                that contains reactance, (X) the current will lead or lag the
+                voltage by exactly 90o (the phase angle) so power is both
+                consumed and returned back to the source with the average power
+                calculated over one full periodic cycle being equal to zero.
+            </p>
+            <p>
+                The electrical power consumed by a resistance, (R) is called
+                the true or real power and is simply obtained by multiplying
+                the rms voltage with the rms current. The power consumed by a
+                reactance, (X) is called the reactive power and is obtained by
+                multiplying the voltage, current, and the sine of the phase
+                angle between them.
+            </p>
+            <p>
+                The symbol for phase angle is θ (Theta) and which represents
+                the inefficiency of the AC circuit with regards to the total
+                reactive impedance (Z) that opposes the flow of current in the
+                circuit.
+            </p>
+        </div>
+    </div>
+</div>

@@ -152,7 +152,7 @@ public class Setting extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+//        super.onBackPressed();
         Toast.makeText(this, "Press DONE button to Exit", Toast.LENGTH_SHORT).show();
     }
 }

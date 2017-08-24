@@ -45,7 +45,7 @@ public class NavigationActivity extends AppCompatActivity
     private ShareActionProvider mShareActionProvider;
 
     public static SharedPreferences sharedpreferences;
-
+    public static String TAG="Ankit";
 
 
     @Override
@@ -134,7 +134,7 @@ public class NavigationActivity extends AppCompatActivity
 
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"ankit.pandey14ap@gmail.com","prem.sagar@banaao.co.in"});
+            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"ankit.pandey14ap@gmail.com","prem.sagar@banaao.co.in","paritoshadvance@gmail.com"});
 //        i.putExtra(Intent.EXTRA_EMAIL  , arrayList);
             i.putExtra(Intent.EXTRA_SUBJECT, "Banaao Electronics");
 //            i.putExtra(Intent.EXTRA_TEXT   , feedbackEditText.getText().toString());
@@ -159,8 +159,9 @@ public class NavigationActivity extends AppCompatActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-
+        MyCustomAdapter myCustomAdapter;
         public PlaceholderFragment() {
+            Log.i(TAG, "PlaceholderFragment: ");
         }
 
         /**
@@ -168,6 +169,7 @@ public class NavigationActivity extends AppCompatActivity
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
+            Log.i(TAG, "newInstance: ");
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -178,19 +180,18 @@ public class NavigationActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            Log.i(TAG, "onCreateView: ");
             final ArrayList<String> list = new ArrayList<>();
-            list.add("Power Triangle and Factor");
             list.add("Power in AC Circuits");
             list.add("Passive Components");
             list.add("Harmonics");
             list.add("Reactive Power");
             list.add("Average Voltage");
             list.add("RMS Voltage Tutorial");
-            list.add("hello");
-            list.add("demo");
+            list.add("Power Triangle and Power Factor");
+            list.add("Binary");
 
             final ArrayList<String> iconList = new ArrayList<>();
-            iconList.add(String.valueOf(R.drawable.icon1));
             iconList.add(String.valueOf(R.drawable.icon2));
             iconList.add(String.valueOf(R.drawable.icon3));
             iconList.add(String.valueOf(R.drawable.icon4));
@@ -198,13 +199,12 @@ public class NavigationActivity extends AppCompatActivity
             iconList.add(String.valueOf(R.drawable.icon1));
             iconList.add(String.valueOf(R.drawable.icon2));
             iconList.add(String.valueOf(R.drawable.icon4));
-            iconList.add(String.valueOf(R.drawable.icon5_png_icon));
+            iconList.add(String.valueOf(R.drawable.electronics_48));
 
 
-            //for starred list
+            //for Favourite List
             final ArrayList<String> list1 = new ArrayList<>();
             final ArrayList<String> iconList1 = new ArrayList<>();
-
 
             for (int i = 0; i <list.size() ; i++) {
                 if(sharedpreferences .getBoolean(list.get(i), false)){
@@ -218,7 +218,7 @@ public class NavigationActivity extends AppCompatActivity
 
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                MyCustomAdapter myCustomAdapter = new MyCustomAdapter(this.getActivity(), list,iconList);
+                myCustomAdapter = new MyCustomAdapter(this.getActivity(), list,iconList);
                 listView.setAdapter(myCustomAdapter);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -229,7 +229,7 @@ public class NavigationActivity extends AppCompatActivity
                         Log.i("Ankit","main "+list.get(position) );
 
                         startActivity(intent);
-                        Toast.makeText(getActivity(), list.get(position), Toast.LENGTH_SHORT).show();
+                        getActivity().finish();
                     }
                 });
 
@@ -244,7 +244,7 @@ public class NavigationActivity extends AppCompatActivity
                         Intent intent = new Intent(getActivity(),ReadActivity.class);
                         intent.putExtra("TITLE", list1.get(position));
                         startActivity(intent);
-                        Toast.makeText(getActivity(), list1.get(position), Toast.LENGTH_SHORT).show();
+                        getActivity().finish();
                     }
                 });
 
@@ -260,6 +260,8 @@ public class NavigationActivity extends AppCompatActivity
         @Override
         public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
+            Log.i(TAG, "onViewCreated: ");
+            
         }
     }
 

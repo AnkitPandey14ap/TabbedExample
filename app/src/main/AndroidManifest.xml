@@ -15,8 +15,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ReadActivity" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity android:name=".ReadActivity" >
+
+        </activity>
+
         <activity
             android:name=".NavigationActivity"
             android:label="Banaao Electronics"
@@ -33,4 +39,7 @@
         </activity>
     </application>
 
+    <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="MainActivity" />
 </manifest>

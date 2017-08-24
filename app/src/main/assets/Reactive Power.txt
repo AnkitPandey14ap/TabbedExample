@@ -1,22 +1,292 @@
-<html>
-<head>
-
-    <link href="cjcj.css?family=Open+Sans" rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-
-    <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,user-scalable=yes">
-
-</head>
-
-<body>
-<p style="text-align: justify">
-
-
-Reactive Power
-
-</p>
-
-</body>
-
-
-</html>
+<div>
+    <div>
+        <div>
+            <img
+                src="http://www.electronics-tutorials.ws/wp-content/uploads/2013/06/reactive2.gif"
+            />
+        </div>
+    </div>
+    <div>
+        <h1>
+            Reactive Power
+        </h1>
+        <p>
+            Reactive Power can best be described as the quantity of “unused”
+            power that is developed by reactive components, such as inductors
+            or capacitors in an AC circuit or system. In a DC circuit, the
+            product of “volts x amps” gives the power consumed in watts by the
+            circuit.
+        </p>
+    </div>
+    <div>
+        <div>
+            <a
+                title="Facebook"
+                href="http://www.electronics-tutorials.ws/accircuits/reactive-power.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/fb-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                title="Twitter"
+                href="http://www.electronics-tutorials.ws/accircuits/reactive-power.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/tw-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <a
+                href="http://www.electronics-tutorials.ws/accircuits/reactive-power.html#"
+            >
+                <img
+                    src="http://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/more-dark.png"
+                    width="25px"
+                    alt=""
+                />
+            </a>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <div>
+            <p>
+                However, while this formula is also true for purely resistive
+                AC circuits, the situation is slightly more complex in an AC
+                circuits containing reactive components as this volt-amp
+                product can change with frequency.
+            </p>
+            <p>
+                In an AC circuit, the product of voltage and current is
+                expressed as volt-amperes (VA) or kilo volt-amperes (kVA) and
+                is known as <em>Apparent power</em>, symbol S. In a
+                non-inductive purely resistive circuit such as heaters, irons,
+                kettles and filament bulbs etc, their reactance is practically
+                zero, so the impedance of the circuit is composed almost
+                entirely of just resistance.
+            </p>
+            <p>
+                For an AC resistive circuit, the current and voltage are
+                in-phase and the power at any instant can be found by
+                multiplying the voltage by the current at that instant, and
+                because of this “in-phase” relationship, the rms values can be
+                used to find the equivalent DC power or heating effect.
+            </p>
+            <p>
+                However, if the circuit contains reactive components, the
+                voltage and current waveforms will be “out-of-phase” by some
+                amount determined by the circuits phase angle. If the phase
+                angle between the voltage and the current is at its maximum of
+                90o, the volt-amp product will have equal positive and negative
+                values.
+            </p>
+            <p>
+                In other words, the reactive circuit returns as much power to
+                the supply as it consumes resulting in the average power
+                consumed by the circuit being zero, as the same amount of
+                energy keeps flowing alternately from source to the load and
+                back from load to source.
+            </p>
+            <p>
+                Since we have a voltage and a current but no power dissipated,
+                the expression of P = IV (rms) is no longer valid and it
+                therefore follows that the volt-amp product in an AC circuit
+                does not necessarily give the power consumed. Then in order to
+                determine the “real power”, also called <em>Active power</em>,
+                symbol P consumed by an AC circuit, we need to account for not
+                only the volt-amp product but also the phase angle difference
+                between the voltage and the current waveforms given by the
+                equation: VI.cosΦ.
+            </p>
+            <p>
+                Then we can write the relationship between the apparent power
+                and active or real power as:
+            </p>
+            <div>
+            </div>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/articles/reactive1.gif"
+                    alt="active and reactive power equation"
+                    title="Active Reactive Power Equation"
+                    width="550"
+                    height="121"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                Note that power factor (PF) is defined as the ratio between the
+                active power in watts and the apparent power in volt-amperes
+                and indicates how effectively electrical power is being used.
+                In a non-inductive resistive AC circuit, the active power will
+                be equal to the apparent power as the fraction of P/S becomes
+                equal to one or unity. A circuits power factor can be expressed
+                either as a decimal value or as a percentage.
+            </p>
+            <p>
+                But as well as the active and apparent powers in AC circuits,
+                there is also another power component that is present whenever
+                there is a phase angle. This component is called Reactive Power
+                (sometimes referred to as imaginary power) and is expressed in
+                a unit called “volt-amperes reactive”, (VAr), symbol Q and is
+                given by the equation: VI.sinΦ.
+            </p>
+            <p>
+                Reactive power, or VAr, is not really power at all but
+                represents the product of volts and amperes that are
+                out-of-phase with each other. Reactive power is the portion of
+                electricity that helps establish and sustain the electric and
+                magnetic fields required by alternating current equipment. The
+                amount of reactive power present in an AC circuit will depend
+                upon the phase shift or phase angle between the voltage and the
+                current and just like active power, reactive power is positive
+                when it is “supplied” and negative when it is “consumed”.
+            </p>
+            <p>
+                Reactive power is used by most types of electrical equipment
+                that uses a magnetic field, such as motors, generators and
+                transformers. It is also required to supply the reactive losses
+                on overhead power transmission lines.
+            </p>
+            <p>
+                The relationship of the three elements of power, active power,
+                (watts) apparent power, (VA) and reactive power, (VAr) in an AC
+                circuit can be represented by the three sides of right-angled
+                triangle. This representation is called a Power Triangle as
+                shown:
+            </p>
+            <h3>
+                Power in an AC Circuit
+            </h3>
+            <p>
+                <img
+                    src="http://www.electronics-tutorials.ws/articles/reactive2.gif"
+                    alt="reactive power triangle"
+                    title="Reactive Power Triangle"
+                    width="266"
+                    height="212"
+                />
+            </p>
+            <div>
+            </div>
+            <p>
+                From the above power triangle we can see that AC circuits
+                supply or consume two kinds of power: active power and reactive
+                power. Also, active power is never negative, whereas reactive
+                power can be either positive or negative in value so it is
+                always advantageous to reduce reactive power in order to
+                improve system efficiency.
+            </p>
+            <p>
+                The main advantage of using AC electrical power distribution is
+                that the supply voltage level can be changed using
+                transformers, but transformers and induction motors of
+                household appliances, air conditioners and industrial equipment
+                all consume reactive power which takes up space on the
+                transmission lines since larger conductors and transformers are
+                required to handle the larger currents which you need to pay
+                for.
+            </p>
+            <div>
+                <img
+                    src="http://www.electronics-tutorials.ws/articles/reactive4.jpg"
+                    alt="reactive power analogy"
+                    title="Reactive Power Analogy"
+                    width="259"
+                    height="197"
+                />
+                <p>
+                    Reactive Power Analogy with Beer
+                </p>
+            </div>
+            <p>
+                In many ways, reactive power can be thought of like the foam
+                head on a pint or glass of beer. You pay the barman for a full
+                glass of beer but only drink the actual liquid beer which is
+                always less than a full glass.
+            </p>
+            <p>
+                This is because the head (or froth) of the beer takes up
+                additional wasted space in the glass leaving less room for the
+                real beer that you consume, and the same idea is true for
+                reactive power.
+            </p>
+            <p>
+                But for many industrial power applications, reactive power is
+                often useful for an electrical circuit to have. While the real
+                or active power is the energy supplied to run a motor, heat a
+                home, or illuminate an electric light bulb, reactive power
+                provides the important function of regulating the voltage
+                thereby helping to move power effectively through the utility
+                grid and transmission lines to where it is required by the
+                load.
+            </p>
+            <p>
+                While reducing reactive power to help improve the power factor
+                and system efficiency is a good thing, one of the disadvantages
+                of reactive power is that a sufficient quantity of it is
+                required to control the voltage and overcome the losses in a
+                transmission network. This is because if the electrical network
+                voltage is not high enough, active power cannot be supplied.
+                But having too much reactive power flowing around in the
+                network can cause excess heating (I2R losses) and undesirable
+                voltage drops and loss of power along the transmission lines.
+            </p>
+            <h2>
+                Power Factor Correction of Reactive Power
+            </h2>
+            <p>
+                One way to avoid reactive power charges, is to install power
+                factor correction capacitors. Normally residential customers
+                are charged only for the active power consumed in kilo-watt
+                hours (kWhr) because nearly all residential and single phase
+                power factor values are essentially the same due to power
+                factor correction capacitors being built into most domestic
+                appliances by the manufacturer.
+            </p>
+            <p>
+                Industrial customers, on the other hand, which use 3-phase
+                supplies have widely different power factors, and for this
+                reason, the electrical utility may have to take the power
+                factors of these industrial customers into account paying a
+                penalty if their power factor drops below a prescribed value
+                because it costs the utility companies more to supply
+                industrial customers since larger conductors, larger
+                transformers, larger switchgear, etc, is required to handle the
+                larger currents.
+            </p>
+            <p>
+                Generally, for a load with a power factor of less than 0.95
+                more reactive power is required. For a load with a power factor
+                value higher than 0.95 is considered good as the power is being
+                consumed more effectively, and a load with a power factor of
+                1.0 or unity is considered perfect and does not use any
+                reactive power.
+            </p>
+            <p>
+                Then we have seen that “apparent power” is a combination of
+                both “reactive power” and “active power”. Active or real power
+                is a result of a circuit containing resistive components only,
+                while reactive power results from a circuit containing either
+                capacitive and inductive components. Almost all AC circuits
+                will contain a combination of these R, L and C components.
+            </p>
+            <p>
+                Since reactive power takes away from the active power, it must
+                be considered in an electrical system to ensure that the
+                apparent power supplied is sufficient to supply the load. This
+                is a critical aspect of understanding AC power sources because
+                the power source must be capable of supplying the necessary
+                volt-amp (VA) power for any given load.
+            </p>
+        </div>
+    </div>
+</div>

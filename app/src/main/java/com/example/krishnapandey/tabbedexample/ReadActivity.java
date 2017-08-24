@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
@@ -47,6 +49,7 @@ public class ReadActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_read);
 
         sharedpreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
@@ -93,26 +96,39 @@ public class ReadActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(ReadActivity.this,Setting.class);
             i.putExtra("SIZE", textSize);
             i.putExtra("STYLE", textStyle);
             startActivityForResult(i, result);
-
             return true;
         }
         if(id==R.id.favouriteButton){
-            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
             if(star){
+                Toast.makeText(this, "Removed from Favourite", Toast.LENGTH_SHORT).show();
                 star = false;
                 item.setIcon(R.drawable.heart_unchecked);
             }
             else{
+                Toast.makeText(this, "Added to Favourite", Toast.LENGTH_SHORT).show();
                 star = true;
                 item.setIcon(R.drawable.heart_checked);
             }
             return true;
         }
+        if(id==android.R.id.home){
+            startActivity(new Intent(ReadActivity.this,NavigationActivity.class));
+            super.onBackPressed();
+
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("SIZE", textSize);
+            editor.putString("STYLE", textStyle);
+            //storing the data is starred or not
+            editor.putBoolean(title, star);
+            editor.commit();
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -198,6 +214,7 @@ public class ReadActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        startActivity(new Intent(ReadActivity.this,NavigationActivity.class));
         super.onBackPressed();
 
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -208,4 +225,20 @@ public class ReadActivity extends AppCompatActivity {
         editor.commit();
 //        editor.apply();
     }
+/*
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Toast.makeText(this, "touched", Toast.LENGTH_SHORT).show();
+        if (event.getAction() == MotionEvent.ACTION_SCROLL) {
+            // your stuff ; }
+            if(getSupportActionBar().isShowing()){
+                getSupportActionBar().hide();
+            }else{
+                getSupportActionBar().show();
+            }
+        }
+        return super.onTouchEvent(event);
+    }*/
+    
+    
 }
